@@ -274,7 +274,7 @@
           <div class="spend-limit-content">
             <p class="spend-limit-text">You are nearing your Tier 1 spend limit. You've used 50% of your monthly spend limit.</p>
           </div>
-          <a href="#" class="spend-limit-link" id="spend-limit-go-link">Go to Limit</a>
+          <a href="#" class="spend-limit-link" id="spend-limit-go-link" data-page="limits">Go to Limit</a>
           <button type="button" class="spend-limit-btn-upgrade" id="home-upgrade-limit-btn">Upgrade my limit</button>
           <button type="button" class="spend-limit-dismiss" id="onboarding-credit-dismiss" aria-label="Dismiss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
         </div>
@@ -1826,6 +1826,120 @@ for chunk in response:
         </main>
       </div>
 
+      <!-- Limits page (entry: Go to Limit on Home banner only) -->
+      <div class="page-content page-limits" id="page-limits" hidden>
+        <main class="main-content limits-main">
+          <div class="limits-header">
+            <h1 class="limits-title">Limits</h1>
+            <div class="limits-header-actions">
+              <button type="button" class="limits-btn-primary" id="limits-increase-limit-btn"><span>Increase your limit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+              <a href="#" class="limits-learn-link">Learn more about limits <span class="gd-ext-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span></a>
+            </div>
+          </div>
+
+          <div class="limits-two-col">
+            <section class="limits-card limits-request-card">
+              <span class="limits-clock-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+              <h2 class="limits-card-title">Limit increase request submitted</h2>
+              <p class="limits-request-desc">This process typically takes 3-5 business days. You'll receive an email with the decision.</p>
+              <p class="limits-submitted"><span class="limits-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span> Submitted on February 25, 2026</p>
+              <div class="limits-request-actions">
+                <a href="#" class="limits-learn-link">Learn more about limits <span class="gd-ext-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span></a>
+                <button type="button" class="limits-btn-secondary"><span class="limits-ticket-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span> View your ticket</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                <button type="button" class="limits-btn-primary" id="limits-increase-limit-btn-2"><span>Increase your limit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+              </div>
+            </section>
+
+            <section class="limits-card limits-plan-card">
+              <div class="limits-plan-band"></div>
+              <h2 class="limits-card-title">Current Plan</h2>
+              <div class="limits-tier-badge-wrap">
+                <span class="limits-tier-avatar">A</span>
+                <span class="limits-tier-name">TIER 2</span>
+              </div>
+              <div class="limits-plan-metric">
+                <span class="limits-plan-label">Monthly Charge Threshold</span>
+                <span class="limits-plan-value">$500/$1100</span>
+                <span class="limits-plan-pct">60%</span>
+              </div>
+              <div class="limits-plan-bar-wrap">
+                <div class="limits-plan-bar" style="width:60%"></div>
+              </div>
+              <div class="limits-plan-warnings">
+                <div class="limits-warning-item limits-warning-approaching">
+                  <span class="limits-warning-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+                  <span class="limits-warning-label">Resource approaching limit</span>
+                  <span class="limits-warning-count">1</span>
+                </div>
+                <div class="limits-warning-item limits-warning-reached">
+                  <span class="limits-warning-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
+                  <span class="limits-warning-label">Limit reached</span>
+                  <span class="limits-warning-count">5</span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section class="limits-table-section">
+            <table class="limits-table">
+              <thead>
+                <tr>
+                  <th class="limits-th">Resource <span class="limits-th-arrow">▾</span></th>
+                  <th class="limits-th">Current Usage <span class="limits-th-arrow">▾</span></th>
+                  <th class="limits-th">Current usage percentage <span class="limits-th-arrow">▾</span></th>
+                  <th class="limits-th">Limit <span class="limits-th-arrow">▾</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="limits-row limits-row-100">
+                  <td class="limits-td"><a href="#" class="limits-resource-link">Compute</a><span class="limits-expand-icon">+</span></td>
+                  <td class="limits-td">2</td>
+                  <td class="limits-td limits-pct-cell"><div class="limits-pct-bar limits-pct-red" style="width:100%"></div><span>100%</span><span class="limits-pct-alert limits-pct-alert-red" aria-label="Limit reached"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span></td>
+                  <td class="limits-td">10</td>
+                </tr>
+                <tr class="limits-row limits-row-100">
+                  <td class="limits-td"><a href="#" class="limits-resource-link">Storage</a><span class="limits-expand-icon">+</span></td>
+                  <td class="limits-td">10</td>
+                  <td class="limits-td limits-pct-cell"><div class="limits-pct-bar limits-pct-red" style="width:100%"></div><span>100%</span><span class="limits-pct-alert limits-pct-alert-red" aria-label="Limit reached"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span></td>
+                  <td class="limits-td">120</td>
+                </tr>
+                <tr class="limits-row limits-row-80">
+                  <td class="limits-td"><a href="#" class="limits-resource-link">Networking</a><span class="limits-expand-icon">+</span></td>
+                  <td class="limits-td">4</td>
+                  <td class="limits-td limits-pct-cell"><div class="limits-pct-bar limits-pct-orange" style="width:80%"></div><span>80%</span><span class="limits-pct-alert limits-pct-alert-orange" aria-label="Approaching limit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span></td>
+                  <td class="limits-td">400</td>
+                </tr>
+                <tr class="limits-row limits-row-50">
+                  <td class="limits-td"><a href="#" class="limits-resource-link">Inference</a><span class="limits-expand-icon">+</span></td>
+                  <td class="limits-td">5</td>
+                  <td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:50%"></div><span>50%</span></td>
+                  <td class="limits-td">20</td>
+                </tr>
+                <tr class="limits-row"><td class="limits-td"><a href="#" class="limits-resource-link">Service grouping goes here</a><span class="limits-expand-icon">+</span></td><td class="limits-td">6</td><td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:20%"></div><span>20%</span></td><td class="limits-td">30</td></tr>
+                <tr class="limits-row"><td class="limits-td"><a href="#" class="limits-resource-link">Service grouping goes here</a><span class="limits-expand-icon">+</span></td><td class="limits-td">20</td><td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:50%"></div><span>50%</span></td><td class="limits-td">40</td></tr>
+                <tr class="limits-row"><td class="limits-td"><a href="#" class="limits-resource-link">Service grouping goes here</a><span class="limits-expand-icon">+</span></td><td class="limits-td">6</td><td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:30%"></div><span>30%</span></td><td class="limits-td">20</td></tr>
+                <tr class="limits-row limits-row-expanded"><td class="limits-td"><a href="#" class="limits-resource-link">Service grouping goes here</a><span class="limits-expand-icon limits-expand-minus">−</span></td><td class="limits-td">2</td><td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:20%"></div><span>20%</span></td><td class="limits-td">10</td></tr>
+              </tbody>
+            </table>
+            <table class="limits-table limits-subtable">
+              <thead>
+                <tr><th class="limits-th">Name</th><th class="limits-th">Current Usage</th><th class="limits-th">Current usage percentage</th><th class="limits-th">Limit</th></tr>
+              </thead>
+              <tbody>
+                <tr class="limits-row">
+                  <td class="limits-td"><span class="limits-resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg></span> Resource Name</td>
+                  <td class="limits-td"><span class="limits-badge limits-badge-noaccess"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> No access</span></td>
+                  <td class="limits-td">—</td>
+                  <td class="limits-td"><span class="limits-badge limits-badge-noaccess">No access</span></td>
+                </tr>
+                <tr class="limits-row"><td class="limits-td"><span class="limits-resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="8" rx="1"/><rect x="2" y="14" width="20" height="8" rx="1"/></svg></span> Resource Name</td><td class="limits-td">10</td><td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:30%"></div><span>30%</span></td><td class="limits-td">120</td></tr>
+                <tr class="limits-row"><td class="limits-td"><span class="limits-resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 18l6-6-6-6"/><path d="M8 6l6 6-6 6"/></svg></span> Resource Name</td><td class="limits-td">4</td><td class="limits-td"><div class="limits-pct-bar limits-pct-blue" style="width:20%"></div><span>20%</span></td><td class="limits-td">400</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </main>
+      </div>
+
     </div>
   </div>
 
@@ -1839,7 +1953,7 @@ for chunk in response:
       <div class="gd-limit-modal-body">
         <!-- Step 1: Choose Prepay or Support ticket (match image 3) -->
         <div class="gd-limit-step" id="gd-limit-step1">
-          <p class="gd-limit-modal-intro">You are currently assigned to Tier 1 limits. To increase your resource limits, you can submit a request to support or prepay to increase your resource limits and monthly billing threshold.</p>
+          <p class="gd-limit-modal-intro">You are currently assigned to Tier 1 limits. To increase your resource limits, you can submit a request to support or prepay to increase your resource limits and monthly charge threshold.</p>
           <a href="#" class="gd-limit-modal-link">Learn more about limits. <span class="gd-ext-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span></a>
           <div class="gd-limit-options gd-limit-options-two-col">
             <button type="button" class="gd-limit-option gd-limit-option-selected" id="gd-limit-option-prepay" data-value="prepay">
@@ -1877,44 +1991,44 @@ for chunk in response:
               <p class="gd-limit-tier-usage">Basic Droplets: 3/3 used &#183; 100%</p>
               <div class="gd-limit-bar-wrap gd-limit-bar-red"><div class="gd-limit-bar" style="width:100%"></div></div>
               <ul class="gd-limit-tier-features">
-                <li class="gd-limit-check">$50 monthly billing threshold</li>
+                <li class="gd-limit-check">$50 monthly charge threshold</li>
                 <li class="gd-limit-check">Max of 3 Basic Droplets</li>
                 <li class="gd-limit-cross">No access to GPU Droplets</li>
               </ul>
             </div>
-            <div class="gd-limit-tier gd-limit-tier-selectable gd-limit-tier-selected" data-tier="2" data-amount="50" data-threshold="$250 monthly billing threshold" data-tier-name="Tier 2">
+            <div class="gd-limit-tier gd-limit-tier-selectable gd-limit-tier-selected" data-tier="2" data-amount="50" data-threshold="$250 monthly charge threshold" data-tier-name="Tier 2">
               <div class="gd-limit-tier-head"><span class="gd-limit-tier-radio gd-limit-tier-radio-selected" aria-hidden="true"></span><strong>Tier 2</strong></div>
               <p class="gd-limit-tier-prepay"><strong>$50</strong> / prepayment amount</p>
               <ul class="gd-limit-tier-features">
-                <li class="gd-limit-check">$250 monthly billing threshold</li>
+                <li class="gd-limit-check">$250 monthly charge threshold</li>
                 <li class="gd-limit-check">Max of 10 Basic Droplets</li>
                 <li class="gd-limit-check">description</li>
               </ul>
             </div>
-            <div class="gd-limit-tier gd-limit-tier-selectable" data-tier="3" data-amount="250" data-threshold="$1,250 monthly billing threshold" data-tier-name="Tier 3">
+            <div class="gd-limit-tier gd-limit-tier-selectable" data-tier="3" data-amount="250" data-threshold="$1,250 monthly charge threshold" data-tier-name="Tier 3">
               <div class="gd-limit-tier-head"><span class="gd-limit-tier-radio" aria-hidden="true"></span><strong>Tier 3</strong></div>
               <p class="gd-limit-tier-prepay"><strong>$250</strong> / prepayment amount</p>
               <ul class="gd-limit-tier-features">
-                <li class="gd-limit-check">$1,250 monthly billing threshold</li>
+                <li class="gd-limit-check">$1,250 monthly charge threshold</li>
                 <li class="gd-limit-check">Max of 15 Basic Droplets</li>
                 <li class="gd-limit-check">description</li>
                 <li class="gd-limit-check">Access to GPU Droplets</li>
               </ul>
             </div>
-            <div class="gd-limit-tier gd-limit-tier-selectable" data-tier="4" data-amount="1000" data-threshold="$5,000 monthly billing threshold" data-tier-name="Tier 4">
+            <div class="gd-limit-tier gd-limit-tier-selectable" data-tier="4" data-amount="1000" data-threshold="$5,000 monthly charge threshold" data-tier-name="Tier 4">
               <div class="gd-limit-tier-head"><span class="gd-limit-tier-radio" aria-hidden="true"></span><strong>Tier 4</strong></div>
               <p class="gd-limit-tier-prepay"><strong>$1,000</strong> / prepayment amount</p>
               <ul class="gd-limit-tier-features">
-                <li class="gd-limit-check">$5,000 monthly billing threshold</li>
+                <li class="gd-limit-check">$5,000 monthly charge threshold</li>
                 <li class="gd-limit-check">Max of 25 Basic Droplets</li>
                 <li class="gd-limit-check">Access to GPU Droplets</li>
               </ul>
             </div>
-            <div class="gd-limit-tier gd-limit-tier-selectable" data-tier="5" data-amount="4000" data-threshold="$20,000 monthly billing threshold" data-tier-name="Tier 5">
+            <div class="gd-limit-tier gd-limit-tier-selectable" data-tier="5" data-amount="4000" data-threshold="$20,000 monthly charge threshold" data-tier-name="Tier 5">
               <div class="gd-limit-tier-head"><span class="gd-limit-tier-radio" aria-hidden="true"></span><strong>Tier 5</strong></div>
               <p class="gd-limit-tier-prepay"><strong>$4,000</strong> / prepayment amount</p>
               <ul class="gd-limit-tier-features">
-                <li class="gd-limit-check">$20,000 monthly billing threshold</li>
+                <li class="gd-limit-check">$20,000 monthly charge threshold</li>
                 <li class="gd-limit-check">Access to GPU Droplets</li>
                 <li class="gd-limit-check">Max of 100 Basic Droplets</li>
               </ul>
@@ -1929,7 +2043,7 @@ for chunk in response:
               </ul>
             </div>
           </div>
-          <p class="gd-limit-modal-footnote">*Monthly spend thresholds do not act as a billing limit. Once reached, you will continue to accrue resource usage and be prompted to pay your account balance at that time.</p>
+          <p class="gd-limit-modal-footnote">*Monthly charge thresholds do not act as a billing limit. Once reached, you will continue to accrue resource usage and be prompted to pay your account balance at that time.</p>
           <label class="gd-limit-modal-checkbox"><input type="checkbox" class="gd-limit-modal-checkbox-input" id="gd-limit-terms-checkbox"> I agree to the <a href="#" class="gd-limit-modal-link">Terms of Service</a> and <a href="#" class="gd-limit-modal-link">Acceptable Use Policy</a>. I understand that the prepayment is non-refundable and will be applied as account credit.</label>
           <div class="gd-limit-step2-footer">
             <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-outline" id="gd-limit-modal-cancel2">Cancel</button>
@@ -1954,12 +2068,102 @@ for chunk in response:
             </dl>
           </div>
           <div class="gd-limit-upgrade-details">
-            <div><span class="gd-limit-upgrade-label">New monthly billing threshold:</span> <span id="gd-receipt-threshold">$250 monthly billing threshold</span></div>
+            <div><span class="gd-limit-upgrade-label">New monthly charge threshold:</span> <span id="gd-receipt-threshold">$250 monthly charge threshold</span></div>
             <div><span class="gd-limit-upgrade-label">New Tier:</span> <span id="gd-receipt-tier">Tier 2</span></div>
           </div>
           <div class="gd-limit-step3-footer">
             <a href="#" class="gd-limit-modal-link" id="gd-return-billing-link" data-page="billing">Return to billing overview</a>
             <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-primary" id="gd-limit-done-btn">Done</button>
+          </div>
+        </div>
+
+        <!-- Support ticket flow: Step 1 (Request a Limit Increase) -->
+        <div class="gd-limit-step gd-support-step" id="gd-limit-step-support1" hidden>
+          <p class="gd-limit-modal-intro">Submit a request to increase your monthly charge thresholds or a product-specific resource limit.</p>
+          <div class="gd-support-request-type">
+            <label class="gd-support-option">
+              <input type="radio" name="gd-support-type" value="tiers" class="gd-support-radio">
+              <span class="gd-support-option-text">Increase my limit tiers</span>
+            </label>
+            <label class="gd-support-option gd-support-option-selected">
+              <input type="radio" name="gd-support-type" value="product" class="gd-support-radio" checked>
+              <span class="gd-support-option-text">Increase a product limit</span>
+            </label>
+            <label class="gd-support-option">
+              <input type="radio" name="gd-support-type" value="other" class="gd-support-radio">
+              <span class="gd-support-option-text">Something else</span>
+            </label>
+          </div>
+          <label class="gd-support-field">
+            <span class="gd-support-label">Reason <span class="gd-support-required">*</span></span>
+            <textarea class="gd-support-reason" id="gd-support-reason1" rows="4" placeholder="Describe the limit and why you need a higher limit"></textarea>
+          </label>
+          <div class="gd-limit-step1-footer">
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-outline gd-support-cancel">Cancel</button>
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-primary" id="gd-support-next1">Next</button>
+          </div>
+        </div>
+
+        <!-- Support ticket flow: Step 2 (Select resource) -->
+        <div class="gd-limit-step gd-support-step" id="gd-limit-step-support2" hidden>
+          <p class="gd-limit-modal-intro">Submit a request to increase your monthly charge thresholds or a product-specific resource limit.</p>
+          <div class="gd-support-field">
+            <span class="gd-support-label">Select which resource you want to increase</span>
+            <div class="gd-support-resource-dropdown">
+              <span class="gd-support-droplet-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"/></svg></span>
+              <span class="gd-support-resource-text">Droplet</span>
+              <svg class="gd-support-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <label class="gd-support-field">
+            <span class="gd-support-label">Reason <span class="gd-support-required">*</span></span>
+            <textarea class="gd-support-reason" id="gd-support-reason2" rows="4" placeholder="Describe the limit and why you need a higher limit"></textarea>
+          </label>
+          <div class="gd-support-request-type">
+            <label class="gd-support-option"><input type="radio" name="gd-support-type2" value="tiers" class="gd-support-radio"><span class="gd-support-option-text">Increase my limit tiers</span></label>
+            <label class="gd-support-option gd-support-option-selected"><input type="radio" name="gd-support-type2" value="product" class="gd-support-radio" checked><span class="gd-support-option-text">Increase a product limit</span></label>
+            <label class="gd-support-option"><input type="radio" name="gd-support-type2" value="other" class="gd-support-radio"><span class="gd-support-option-text">Something else</span></label>
+          </div>
+          <div class="gd-limit-step1-footer">
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-outline gd-support-cancel">Cancel</button>
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-primary" id="gd-support-next2">Next</button>
+          </div>
+        </div>
+
+        <!-- Support ticket flow: Step 3 (Review / Submit) -->
+        <div class="gd-limit-step gd-support-step" id="gd-limit-step-support3" hidden>
+          <p class="gd-limit-modal-intro">Submit a request to increase your monthly charge thresholds or a product-specific resource limit.</p>
+          <div class="gd-support-field">
+            <span class="gd-support-label">Select which resource you want to increase</span>
+            <div class="gd-support-resource-dropdown gd-support-readonly">
+              <span class="gd-support-droplet-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"/></svg></span>
+              <span class="gd-support-resource-text">Droplet</span>
+            </div>
+          </div>
+          <label class="gd-support-field">
+            <span class="gd-support-label">Reason <span class="gd-support-required">*</span></span>
+            <textarea class="gd-support-reason" id="gd-support-reason3" rows="4" placeholder="Describe the limit and why you need a higher limit" readonly></textarea>
+          </label>
+          <div class="gd-support-request-type">
+            <label class="gd-support-option"><input type="radio" name="gd-support-type3" class="gd-support-radio" disabled><span class="gd-support-option-text">Increase my limit tiers</span></label>
+            <label class="gd-support-option gd-support-option-selected"><input type="radio" name="gd-support-type3" class="gd-support-radio" checked disabled><span class="gd-support-option-text">Increase a product limit</span></label>
+            <label class="gd-support-option"><input type="radio" name="gd-support-type3" class="gd-support-radio" disabled><span class="gd-support-option-text">Something else</span></label>
+          </div>
+          <div class="gd-limit-step1-footer">
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-outline gd-support-cancel">Cancel</button>
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-primary" id="gd-support-submit">Submit Request</button>
+          </div>
+        </div>
+
+        <!-- Support ticket flow: Done -->
+        <div class="gd-limit-step gd-support-step" id="gd-limit-step-support-done" hidden>
+          <div class="gd-limit-success-head">
+            <span class="gd-limit-success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="48" height="48"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+            <h3 class="gd-limit-success-title">Request submitted</h3>
+            <p class="gd-limit-success-desc">Our support team will review your limit increase request and get back to you within 3-5 business days.</p>
+          </div>
+          <div class="gd-limit-step1-footer" style="justify-content: flex-end;">
+            <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-primary" id="gd-support-done-btn">Done</button>
           </div>
         </div>
       </div>
@@ -2161,6 +2365,10 @@ for chunk in response:
         if (gdLimitStep1) gdLimitStep1.hidden = false;
         if (gdLimitStep2) gdLimitStep2.hidden = true;
         if (gdLimitStep3) gdLimitStep3.hidden = true;
+        if (gdSupportStep1) gdSupportStep1.hidden = true;
+        if (gdSupportStep2) gdSupportStep2.hidden = true;
+        if (gdSupportStep3) gdSupportStep3.hidden = true;
+        if (gdSupportStepDone) gdSupportStepDone.hidden = true;
       }
       function closeGdLimitModal() {
         if (gdLimitModal) {
@@ -2198,11 +2406,75 @@ for chunk in response:
       if (gdIncreaseLimitBtn) gdIncreaseLimitBtn.addEventListener('click', openGdLimitModal);
       var homeUpgradeLimitBtn = document.getElementById('home-upgrade-limit-btn');
       if (homeUpgradeLimitBtn) homeUpgradeLimitBtn.addEventListener('click', openGdLimitModal);
+      var limitsIncreaseBtn = document.getElementById('limits-increase-limit-btn');
+      var limitsIncreaseBtn2 = document.getElementById('limits-increase-limit-btn-2');
+      if (limitsIncreaseBtn) limitsIncreaseBtn.addEventListener('click', openGdLimitModal);
+      if (limitsIncreaseBtn2) limitsIncreaseBtn2.addEventListener('click', openGdLimitModal);
       if (gdLimitModalClose) gdLimitModalClose.addEventListener('click', closeGdLimitModal);
       document.querySelectorAll('#gd-limit-modal-cancel, #gd-limit-modal-cancel2').forEach(function(btn) { if (btn) btn.addEventListener('click', closeGdLimitModal); });
       if (gdLimitOptionPrepay) gdLimitOptionPrepay.addEventListener('click', function() { gdLimitOptionPrepay.classList.add('gd-limit-option-selected'); gdLimitOptionPrepay.querySelector('.gd-limit-option-radio').classList.add('gd-limit-option-radio-selected'); if (gdLimitOptionTicket) { gdLimitOptionTicket.classList.remove('gd-limit-option-selected'); gdLimitOptionTicket.querySelector('.gd-limit-option-radio').classList.remove('gd-limit-option-radio-selected'); } });
       if (gdLimitOptionTicket) gdLimitOptionTicket.addEventListener('click', function() { gdLimitOptionTicket.classList.add('gd-limit-option-selected'); gdLimitOptionTicket.querySelector('.gd-limit-option-radio').classList.add('gd-limit-option-radio-selected'); if (gdLimitOptionPrepay) { gdLimitOptionPrepay.classList.remove('gd-limit-option-selected'); gdLimitOptionPrepay.querySelector('.gd-limit-option-radio').classList.remove('gd-limit-option-radio-selected'); } });
-      if (gdLimitStep1Next) gdLimitStep1Next.addEventListener('click', function() { if (gdLimitOptionPrepay && gdLimitOptionPrepay.classList.contains('gd-limit-option-selected')) showGdLimitStep2(); });
+      var gdSupportStep1 = document.getElementById('gd-limit-step-support1');
+      var gdSupportStep2 = document.getElementById('gd-limit-step-support2');
+      var gdSupportStep3 = document.getElementById('gd-limit-step-support3');
+      var gdSupportStepDone = document.getElementById('gd-limit-step-support-done');
+      var gdSupportReason1 = document.getElementById('gd-support-reason1');
+      var gdSupportReason2 = document.getElementById('gd-support-reason2');
+      var gdSupportReason3 = document.getElementById('gd-support-reason3');
+      function showGdSupportStep(stepNum) {
+        if (gdLimitModalTitle) gdLimitModalTitle.textContent = 'Request a Limit Increase';
+        if (gdLimitStep1) gdLimitStep1.hidden = true;
+        if (gdLimitStep2) gdLimitStep2.hidden = true;
+        if (gdLimitStep3) gdLimitStep3.hidden = true;
+        if (gdSupportStep1) gdSupportStep1.hidden = stepNum !== 1;
+        if (gdSupportStep2) gdSupportStep2.hidden = stepNum !== 2;
+        if (gdSupportStep3) gdSupportStep3.hidden = stepNum !== 3;
+        if (gdSupportStepDone) gdSupportStepDone.hidden = stepNum !== 'done';
+      }
+      function backToGdLimitStep1() {
+        if (gdLimitModalTitle) gdLimitModalTitle.textContent = 'Increase your limit';
+        if (gdLimitStep1) gdLimitStep1.hidden = false;
+        if (gdLimitStep2) gdLimitStep2.hidden = true;
+        if (gdLimitStep3) gdLimitStep3.hidden = true;
+        if (gdSupportStep1) gdSupportStep1.hidden = true;
+        if (gdSupportStep2) gdSupportStep2.hidden = true;
+        if (gdSupportStep3) gdSupportStep3.hidden = true;
+        if (gdSupportStepDone) gdSupportStepDone.hidden = true;
+      }
+      if (gdLimitStep1Next) gdLimitStep1Next.addEventListener('click', function() {
+        if (gdLimitOptionTicket && gdLimitOptionTicket.classList.contains('gd-limit-option-selected')) {
+          showGdSupportStep(1);
+        } else if (gdLimitOptionPrepay && gdLimitOptionPrepay.classList.contains('gd-limit-option-selected')) {
+          showGdLimitStep2();
+        }
+      });
+      if (document.getElementById('gd-support-next1')) document.getElementById('gd-support-next1').addEventListener('click', function() {
+        if (gdSupportReason2 && gdSupportReason1) gdSupportReason2.value = gdSupportReason1.value;
+        showGdSupportStep(2);
+      });
+      if (document.getElementById('gd-support-next2')) document.getElementById('gd-support-next2').addEventListener('click', function() {
+        if (gdSupportReason3 && gdSupportReason2) gdSupportReason3.value = gdSupportReason2.value;
+        showGdSupportStep(3);
+      });
+      if (document.getElementById('gd-support-submit')) document.getElementById('gd-support-submit').addEventListener('click', function() { showGdSupportStep('done'); });
+      if (document.getElementById('gd-support-done-btn')) document.getElementById('gd-support-done-btn').addEventListener('click', closeGdLimitModal);
+      document.querySelectorAll('.gd-support-cancel').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var s1 = document.getElementById('gd-limit-step-support1');
+          var s2 = document.getElementById('gd-limit-step-support2');
+          var s3 = document.getElementById('gd-limit-step-support3');
+          if (s3 && !s3.hidden) { showGdSupportStep(2); return; }
+          if (s2 && !s2.hidden) { showGdSupportStep(1); return; }
+          backToGdLimitStep1();
+        });
+      });
+      document.querySelectorAll('.gd-support-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          var group = this.closest('.gd-support-request-type');
+          if (group) group.querySelectorAll('.gd-support-option').forEach(function(o) { o.classList.remove('gd-support-option-selected'); });
+          this.classList.add('gd-support-option-selected');
+        });
+      });
       if (gdLimitStep2Back) gdLimitStep2Back.addEventListener('click', function(e) { e.preventDefault(); if (gdLimitModalTitle) gdLimitModalTitle.textContent = 'Increase your limit'; if (gdLimitStep1) gdLimitStep1.hidden = false; if (gdLimitStep2) gdLimitStep2.hidden = true; });
       var gdLimitModalBack = document.getElementById('gd-limit-modal-back');
       if (gdLimitModalBack) gdLimitModalBack.addEventListener('click', function() { if (gdLimitModalTitle) gdLimitModalTitle.textContent = 'Increase your limit'; if (gdLimitStep1) gdLimitStep1.hidden = false; if (gdLimitStep2) gdLimitStep2.hidden = true; });
