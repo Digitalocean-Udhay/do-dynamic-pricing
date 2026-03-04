@@ -127,7 +127,7 @@
           </div>
           <div class="nav-sub">
             <a href="#" class="nav-sub-item">Integration Marketplace</a>
-            <a href="#" class="nav-sub-item">AI Agents</a>
+            <a href="#" class="nav-sub-item" id="nav-ai-agents" data-page="agent-marketplace">AI Agents</a>
           </div>
         </div>
         <div class="nav-group">
@@ -278,243 +278,379 @@
           <button type="button" class="spend-limit-btn-upgrade" id="home-upgrade-limit-btn">Upgrade my limit</button>
           <button type="button" class="spend-limit-dismiss" id="onboarding-credit-dismiss" aria-label="Dismiss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
         </div>
-        <div class="onboarding-welcome-card">
-          <span class="onboarding-welcome-avatar" aria-hidden="true">S</span>
-          <div class="onboarding-welcome-text">
-            <h2 class="onboarding-welcome-title">Welcome, Serena</h2>
-            <p class="onboarding-welcome-sub">Let's get your first AI workload up and running.</p>
+
+        <p class="date-text">Feb 4, 2026, Wednesday</p>
+        <h1 class="welcome-title">Welcome aboard, <span class="welcome-team"><svg class="welcome-team-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> My Team</span></h1>
+
+        <div class="home-metrics-row">
+          <div class="home-metric-card">
+            <span class="home-metric-label">Total Tokens In</span>
+            <span class="home-metric-value">1,500</span>
+            <a href="#" class="home-metric-link">Learn more</a>
           </div>
-          <div class="onboarding-welcome-spend">
-            <span class="onboarding-spend-label">CURRENT SPEND</span>
-            <span class="onboarding-spend-value">$0.00</span>
-            <span class="onboarding-spend-meta">No usage yet</span>
+          <div class="home-metric-card">
+            <span class="home-metric-label">Total Tokens Out</span>
+            <span class="home-metric-value">23,023</span>
+            <a href="#" class="home-metric-link">Learn more</a>
+          </div>
+          <div class="home-metric-card">
+            <span class="home-metric-label">Inference cost</span>
+            <span class="home-metric-value">$103.23</span>
+            <a href="#" class="home-metric-link">Learn more</a>
+          </div>
+          <div class="home-metric-card">
+            <span class="home-metric-label">Credits remaining</span>
+            <span class="home-metric-value">$3.00</span>
+            <a href="#" class="home-metric-link">Go to Billing →</a>
           </div>
         </div>
 
-        <p class="date-text">Feb 5, 2026 Wednesday</p>
-        <h1 class="welcome-title">Welcome aboard, My Team</h1>
-        <div class="home-stats-row">
-          <div class="home-stat"><span class="home-stat-label">Number of agents</span> <span class="home-stat-value">13</span> <a href="#" class="home-stat-link">View all agents</a></div>
-          <div class="home-stat"><span class="home-stat-label">Droplet Monitoring</span> <span class="home-stat-value">5</span> <a href="#" class="home-stat-link">Learn more</a></div>
-          <div class="home-stat"><span class="home-stat-label">Projected Spend</span> <span class="home-stat-value">$1243.13</span> <a href="#" class="home-stat-link">Learn more</a></div>
+        <div class="quick-actions-row">
+          <div class="quick-actions">
+            <button class="quick-action-btn"><span class="quick-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M5 12h14"/></svg></span> Create an model</button>
+            <button class="quick-action-btn"><span class="quick-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/></svg></span> Create a Droplet</button>
+            <button class="quick-action-btn"><span class="quick-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span> Create a ticket</button>
+            <button class="quick-action-btn"><span class="quick-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> View billing</button>
+            <button class="quick-action-btn"><span class="quick-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Invite team members</button>
+            <button class="quick-action-btn"><span class="quick-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> Create resource alerts</button>
+          </div>
         </div>
 
-        <h2 class="section-title">Quick Actions</h2>
-        <div class="quick-actions">
-          <button class="quick-action-btn">Create a ticket</button>
-          <button class="quick-action-btn">Create a Droplet</button>
-          <button class="quick-action-btn">View billing</button>
-          <button class="quick-action-btn">Invite team members</button>
-          <button class="quick-action-btn">Create resource alerts</button>
-        </div>
+        <section class="card inference-pulse-card">
+          <div class="inference-pulse-header-row">
+            <h2 class="card-title">Inference pulse</h2>
+            <div class="inference-pulse-feedback">
+              <span class="inference-pulse-feedback-text">Is this dashboard helpful?</span>
+              <button type="button" class="inference-pulse-feedback-btn" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></button>
+              <button type="button" class="inference-pulse-feedback-btn" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"/></svg></button>
+            </div>
+          </div>
+          <div class="inference-pulse-top">
+            <div class="inference-pulse-controls">
+              <div class="inference-pulse-select-wrap inference-pulse-select-all">
+                <svg class="inference-pulse-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 10v4h4"/><path d="M14 10h-4v4"/></svg>
+                <select class="inference-pulse-select"><option>All models</option></select>
+              </div>
+              <div class="inference-pulse-select-row">
+                <select class="inference-pulse-select"><option>Tokens in</option></select>
+                <select class="inference-pulse-select"><option>Last month</option></select>
+              </div>
+            </div>
+            <div class="inference-pulse-learn-block">
+              <a href="#" class="inference-pulse-learn" data-page="analyze-manage">Learn more about this →</a>
+              <p class="inference-pulse-desc">Includes usage from both API and Console</p>
+            </div>
+          </div>
+          <div class="inference-pulse-chart-wrap">
+            <div class="inference-pulse-chart" id="inference-pulse-stacked-chart">
+              <div class="ip-chart-y-axis">
+                <span class="ip-chart-y-label">4M</span>
+                <span class="ip-chart-y-label">3M</span>
+                <span class="ip-chart-y-label">2M</span>
+                <span class="ip-chart-y-label">1M</span>
+                <span class="ip-chart-y-label">0</span>
+              </div>
+              <div class="ip-chart-main">
+                <div class="ip-chart-bars">
+                  <div class="ip-chart-bar" style="height:18%"><span class="ip-bar-seg ip-bar-green" style="height:55%"></span><span class="ip-bar-seg ip-bar-purple" style="height:30%"></span><span class="ip-bar-seg ip-bar-blue" style="height:15%"></span></div>
+                  <div class="ip-chart-bar" style="height:22%"><span class="ip-bar-seg ip-bar-green" style="height:50%"></span><span class="ip-bar-seg ip-bar-pink" style="height:35%"></span><span class="ip-bar-seg ip-bar-orange" style="height:15%"></span></div>
+                  <div class="ip-chart-bar" style="height:28%"><span class="ip-bar-seg ip-bar-purple" style="height:45%"></span><span class="ip-bar-seg ip-bar-blue" style="height:35%"></span><span class="ip-bar-seg ip-bar-gray" style="height:20%"></span></div>
+                  <div class="ip-chart-bar" style="height:35%"><span class="ip-bar-seg ip-bar-green" style="height:48%"></span><span class="ip-bar-seg ip-bar-pink" style="height:52%"></span></div>
+                  <div class="ip-chart-bar" style="height:30%"><span class="ip-bar-seg ip-bar-orange" style="height:50%"></span><span class="ip-bar-seg ip-bar-gray" style="height:50%"></span></div>
+                  <div class="ip-chart-bar" style="height:24%"><span class="ip-bar-seg ip-bar-green" style="height:60%"></span><span class="ip-bar-seg ip-bar-purple" style="height:40%"></span></div>
+                  <div class="ip-chart-bar" style="height:40%"><span class="ip-bar-seg ip-bar-blue" style="height:55%"></span><span class="ip-bar-seg ip-bar-green" style="height:45%"></span></div>
+                  <div class="ip-chart-bar" style="height:32%"><span class="ip-bar-seg ip-bar-purple" style="height:50%"></span><span class="ip-bar-seg ip-bar-gray" style="height:50%"></span></div>
+                  <div class="ip-chart-bar" style="height:20%"><span class="ip-bar-seg ip-bar-pink" style="height:55%"></span><span class="ip-bar-seg ip-bar-orange" style="height:45%"></span></div>
+                  <div class="ip-chart-bar" style="height:26%"><span class="ip-bar-seg ip-bar-green" style="height:65%"></span><span class="ip-bar-seg ip-bar-blue" style="height:35%"></span></div>
+                  <div class="ip-chart-bar" style="height:38%"><span class="ip-bar-seg ip-bar-purple" style="height:48%"></span><span class="ip-bar-seg ip-bar-pink" style="height:32%"></span><span class="ip-bar-seg ip-bar-gray" style="height:20%"></span></div>
+                  <div class="ip-chart-bar" style="height:34%"><span class="ip-bar-seg ip-bar-green" style="height:52%"></span><span class="ip-bar-seg ip-bar-orange" style="height:48%"></span></div>
+                  <div class="ip-chart-bar" style="height:29%"><span class="ip-bar-seg ip-bar-blue" style="height:55%"></span><span class="ip-bar-seg ip-bar-gray" style="height:45%"></span></div>
+                  <div class="ip-chart-bar" style="height:42%"><span class="ip-bar-seg ip-bar-green" style="height:45%"></span><span class="ip-bar-seg ip-bar-purple" style="height:55%"></span></div>
+                  <div class="ip-chart-bar" style="height:31%"><span class="ip-bar-seg ip-bar-pink" style="height:60%"></span><span class="ip-bar-seg ip-bar-orange" style="height:40%"></span></div>
+                  <div class="ip-chart-bar" style="height:25%"><span class="ip-bar-seg ip-bar-green" style="height:70%"></span><span class="ip-bar-seg ip-bar-blue" style="height:30%"></span></div>
+                  <div class="ip-chart-bar" style="height:36%"><span class="ip-bar-seg ip-bar-purple" style="height:50%"></span><span class="ip-bar-seg ip-bar-gray" style="height:50%"></span></div>
+                  <div class="ip-chart-bar" style="height:23%"><span class="ip-bar-seg ip-bar-orange" style="height:58%"></span><span class="ip-bar-seg ip-bar-pink" style="height:42%"></span></div>
+                  <div class="ip-chart-bar" style="height:39%"><span class="ip-bar-seg ip-bar-green" style="height:50%"></span><span class="ip-bar-seg ip-bar-blue" style="height:50%"></span></div>
+                  <div class="ip-chart-bar" style="height:27%"><span class="ip-bar-seg ip-bar-purple" style="height:55%"></span><span class="ip-bar-seg ip-bar-pink" style="height:45%"></span></div>
+                  <div class="ip-chart-bar" style="height:33%"><span class="ip-bar-seg ip-bar-green" style="height:62%"></span><span class="ip-bar-seg ip-bar-orange" style="height:38%"></span></div>
+                  <div class="ip-chart-bar" style="height:37%"><span class="ip-bar-seg ip-bar-blue" style="height:52%"></span><span class="ip-bar-seg ip-bar-gray" style="height:48%"></span></div>
+                  <div class="ip-chart-bar" style="height:41%"><span class="ip-bar-seg ip-bar-green" style="height:48%"></span><span class="ip-bar-seg ip-bar-purple" style="height:52%"></span></div>
+                  <div class="ip-chart-bar" style="height:30%"><span class="ip-bar-seg ip-bar-pink" style="height:50%"></span><span class="ip-bar-seg ip-bar-orange" style="height:50%"></span></div>
+                  <div class="ip-chart-bar" style="height:35%"><span class="ip-bar-seg ip-bar-green" style="height:55%"></span><span class="ip-bar-seg ip-bar-blue" style="height:45%"></span></div>
+                  <div class="ip-chart-bar" style="height:28%"><span class="ip-bar-seg ip-bar-purple" style="height:60%"></span><span class="ip-bar-seg ip-bar-gray" style="height:40%"></span></div>
+                  <div class="ip-chart-bar" style="height:32%"><span class="ip-bar-seg ip-bar-orange" style="height:55%"></span><span class="ip-bar-seg ip-bar-pink" style="height:45%"></span></div>
+                  <div class="ip-chart-bar" style="height:26%"><span class="ip-bar-seg ip-bar-green" style="height:65%"></span><span class="ip-bar-seg ip-bar-purple" style="height:35%"></span></div>
+                  <div class="ip-chart-bar" style="height:24%"><span class="ip-bar-seg ip-bar-blue" style="height:58%"></span><span class="ip-bar-seg ip-bar-gray" style="height:42%"></span></div>
+                </div>
+                <div class="ip-chart-x-labels">
+                  <span>Feb 01</span><span>Feb 02</span><span>Feb 03</span><span>Feb 04</span><span>Feb 05</span><span>Feb 06</span><span>Feb 07</span><span>Feb 08</span><span>Feb 09</span><span>Feb 10</span><span>Feb 11</span><span>Feb 12</span><span>Feb 13</span><span>Feb 14</span><span>Feb 15</span><span>Feb 16</span><span>Feb 17</span><span>Feb 18</span><span>Feb 19</span><span>Feb 20</span><span>Feb 21</span><span>Feb 22</span><span>Feb 23</span><span>Feb 24</span><span>Feb 25</span><span>Feb 26</span><span>Feb 27</span><span>Feb 28</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inference-pulse-legend">
+            <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-green"></span><span>claude-sonnet-4-20250514</span></div>
+            <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-purple"></span><span>claude-opus-4-5-20251101</span></div>
+            <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-blue"></span><span>claude-haiku-4-5-20251001</span></div>
+            <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-pink"></span><span>claude-sonnet-20220314</span></div>
+            <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-orange"></span><span>claude-3-7-sonnet-20250218</span></div>
+            <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-gray"></span><span>Other</span></div>
+          </div>
+        </section>
 
-        <div class="two-col">
+        <div class="two-col home-projects-rec">
+          <section class="card projects-card">
+            <h2 class="card-title">Projects</h2>
+            <div class="projects-search-wrap">
+              <svg class="projects-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input type="text" class="projects-search-input" placeholder="Search by name">
+            </div>
+            <a href="#" class="project-card-link">
+              <div class="project-card">
+                <div class="project-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4c-2 0-4 1-5 3l-8 14c-1 2-1 4 0 6l8 14c1 2 3 3 5 3s4-1 5-3l8-14c1-2 1-4 0-6l-8-14c-1-2-3-3-5-3z" fill="url(#proj-grad)"/><path d="M20 8l6 10-6 10-6-10 6-10z" fill="#7dd3fc"/><defs><linearGradient id="proj-grad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#7dd3fc"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient></defs></svg>
+                </div>
+                <div class="project-card-body">
+                  <span class="project-card-name">My Project</span>
+                  <a href="#" class="project-card-resources-link">10 resources</a>
+                </div>
+                <span class="project-card-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+                </span>
+              </div>
+            </a>
+            <p class="project-active-header">Active resources in this project</p>
+            <ul class="project-card-resources">
+              <li><span class="project-res-icon project-res-icon-db" aria-hidden="true"></span><a href="#">6 Databases</a></li>
+              <li><span class="project-res-icon project-res-icon-container" aria-hidden="true"></span><a href="#">5 Containers</a></li>
+              <li><span class="project-res-icon project-res-icon-droplet" aria-hidden="true"></span><a href="#">4 Droplets</a></li>
+              <li><span class="project-res-icon project-res-icon-app" aria-hidden="true"></span><a href="#">2 Apps</a></li>
+              <li><span class="project-res-icon project-res-icon-app" aria-hidden="true"></span><a href="#">Resource Name</a></li>
+              <li><span class="project-res-icon project-res-icon-app" aria-hidden="true"></span><a href="#">Resource Name</a></li>
+            </ul>
+            <div class="card-pagination">
+              <span class="pagination-text">1-4 of 100</span>
+              <span class="pagination-arrows">
+                <button type="button" class="pagination-arrow" aria-label="Previous" disabled>&#8592;</button>
+                <button type="button" class="pagination-arrow" aria-label="Next">&#8594;</button>
+              </span>
+            </div>
+          </section>
           <section class="card recommended-card">
             <h2 class="card-title">Recommended actions</h2>
             <div class="recommended-actions-list">
               <div class="recommended-action-card">
+                <button type="button" class="rec-dismiss" aria-label="Dismiss">×</button>
                 <div class="rec-action-header">
-                  <span class="rec-action-title">GPU utilization above 85%</span>
-                  <span class="rec-action-badge rec-badge-high">High</span>
+                  <span class="rec-action-title">Unauthorized access attempt detected</span>
+                  <span class="rec-action-badge rec-badge-medium">Medium</span>
                 </div>
-                <div class="rec-action-buttons">
-                  <button type="button" class="btn-outline btn-rec-secondary">Remind me later</button>
-                  <button type="button" class="btn-primary btn-rec">Consider scaling</button>
-                </div>
+                <p class="rec-action-meta"><svg class="rec-action-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Security monitoring</p>
+                <div class="rec-action-footer"><button type="button" class="btn-rec-outline">Investigate further</button></div>
               </div>
               <div class="recommended-action-card">
+                <button type="button" class="rec-dismiss" aria-label="Dismiss">×</button>
                 <div class="rec-action-header">
-                  <span class="rec-action-title">Endpoint latency increasing</span>
+                  <span class="rec-action-title">SSL certificate nearing expiration</span>
                   <span class="rec-action-badge rec-badge-high">High</span>
                 </div>
-                <div class="rec-action-buttons">
-                  <button type="button" class="btn-outline btn-rec-secondary">Remind me later</button>
-                  <button type="button" class="btn-primary btn-rec">Optimize or scale</button>
-                </div>
+                <p class="rec-action-meta"><svg class="rec-action-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Website security</p>
+                <div class="rec-action-footer"><button type="button" class="btn-rec-outline">Renew now</button></div>
               </div>
               <div class="recommended-action-card">
+                <button type="button" class="rec-dismiss" aria-label="Dismiss">×</button>
                 <div class="rec-action-header">
-                  <span class="rec-action-title">Failed inference requests detected</span>
-                  <span class="rec-action-badge rec-badge-high">High</span>
+                  <span class="rec-action-title">Disk space nearing capacity</span>
+                  <span class="rec-action-badge rec-badge-low">Low</span>
                 </div>
-                <div class="rec-action-buttons">
-                  <button type="button" class="btn-outline btn-rec-secondary">Remind me later</button>
-                  <button type="button" class="btn-primary btn-rec">Review logs</button>
-                </div>
+                <p class="rec-action-meta"><svg class="rec-action-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> System maintenance</p>
+                <div class="rec-action-footer"><button type="button" class="btn-rec-outline">Free up space</button></div>
               </div>
             </div>
             <div class="card-pagination">
               <span class="pagination-text">1-3 of 100</span>
               <span class="pagination-arrows">
-                <button type="button" class="pagination-arrow pagination-arrow-left" aria-label="Previous" disabled>&#8592;</button>
-                <button type="button" class="pagination-arrow pagination-arrow-right" aria-label="Next">&#8594;</button>
+                <button type="button" class="pagination-arrow" aria-label="Previous" disabled>&#8592;</button>
+                <button type="button" class="pagination-arrow" aria-label="Next">&#8594;</button>
               </span>
-            </div>
-          </section>
-          <section class="card spend-card">
-            <h2 class="card-title">Spend</h2>
-            <p class="spend-subtitle">SPEND BY CATEGORY</p>
-            <div class="spend-by-category">
-              <div class="spend-row">
-                <div class="spend-row-header">
-                  <span class="spend-category-name">Compute</span>
-                  <span class="spend-category-amount">$2,140</span>
-                </div>
-                <div class="spend-bar-wrap"><div class="spend-bar-fill" style="width:72%"></div></div>
-              </div>
-              <div class="spend-row">
-                <div class="spend-row-header">
-                  <span class="spend-category-name">AI / Inference</span>
-                  <span class="spend-category-amount">$1,420</span>
-                </div>
-                <div class="spend-bar-wrap"><div class="spend-bar-fill" style="width:48%"></div></div>
-              </div>
-              <div class="spend-row">
-                <div class="spend-row-header">
-                  <span class="spend-category-name">Databases</span>
-                  <span class="spend-category-amount">$860</span>
-                </div>
-                <div class="spend-bar-wrap"><div class="spend-bar-fill" style="width:29%"></div></div>
-              </div>
-              <div class="spend-row">
-                <div class="spend-row-header">
-                  <span class="spend-category-name">Storage &amp; CDN</span>
-                  <span class="spend-category-amount">$500</span>
-                </div>
-                <div class="spend-bar-wrap"><div class="spend-bar-fill" style="width:17%"></div></div>
-              </div>
             </div>
           </section>
         </div>
 
-        <section class="card recent-projects-card">
-          <h2 class="card-title">Recent Projects</h2>
-          <div class="recent-projects-grid">
-            <div class="recent-project-item">
-              <h3 class="recent-project-name">Project name</h3>
-              <p class="recent-project-resources">4 resources</p>
+        <div class="two-col monitoring-security-row">
+          <section class="card monitoring-card">
+            <div class="card-title-row card-header-with-link">
+              <h2 class="card-title">Monitoring</h2>
+              <a href="#" class="card-link">Go to Monitoring →</a>
             </div>
-            <div class="recent-project-item">
-              <h3 class="recent-project-name">Project name</h3>
-              <p class="recent-project-resources">4 resources</p>
+            <div class="monitoring-metrics">
+              <div class="monitoring-metric-block">
+                <span class="monitoring-metric-label">All Alerts</span>
+                <span class="monitoring-metric-value">5</span>
+              </div>
+              <div class="monitoring-metric-block monitoring-sre-block">
+                <span class="monitoring-metric-label monitoring-sre-label">SRE enabled</span>
+                <span class="monitoring-metric-value">5</span>
+                <span class="monitoring-spark-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span>
+                <button type="button" class="monitoring-q billing-q" aria-label="Help">?</button>
+              </div>
             </div>
-            <div class="recent-project-item">
-              <h3 class="recent-project-name">Project name</h3>
-              <p class="recent-project-resources">4 resources</p>
+            <p class="monitoring-summary">You have 4 investigations ready to view</p>
+          </section>
+          <section class="card security-card">
+            <div class="card-title-row card-header-with-link">
+              <h2 class="card-title">Security alerts</h2>
+              <a href="#" class="card-link">Go to Security →</a>
             </div>
-          </div>
-        </section>
-
-        <!-- Inference Pulse (PRD: Add Inference to Landing Page) -->
-        <section class="card inference-pulse-card">
-          <div class="inference-pulse-header">
-            <h2 class="card-title">Inference Pulse</h2>
-            <span class="inference-pulse-updated">Last updated: Feb 5, 2026 10:42 AM</span>
-          </div>
-          <!-- Active State: for customers with inference usage -->
-          <div class="inference-pulse-state inference-pulse-active" id="inference-pulse-active">
-            <div class="inference-pulse-table-wrap">
-              <table class="inference-pulse-table">
-                <thead>
-                  <tr>
-                    <th class="ip-th">Type</th>
-                    <th class="ip-th">Key Metrics</th>
-                    <th class="ip-th">Spend / Limit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="ip-row ip-row-healthy" data-page="serverless-inference">
-                    <td class="ip-td"><strong>Serverless</strong></td>
-                    <td class="ip-td">P99 142ms · 48.3K req/hr · 0.02% error</td>
-                    <td class="ip-td">51% of cap</td>
-                  </tr>
-                  <tr class="ip-row ip-row-healthy" data-page="analyze-manage">
-                    <td class="ip-td"><strong>Batch</strong></td>
-                    <td class="ip-td">Completion 94% · 2 pending · 0 failures</td>
-                    <td class="ip-td">Today: $12.40</td>
-                  </tr>
-                  <tr class="ip-row ip-row-warning" data-page="gpu-droplets">
-                    <td class="ip-td"><strong>Dedicated</strong></td>
-                    <td class="ip-td">GPU 78% · 3 instances · 1.2K req/s</td>
-                    <td class="ip-td">$41.60 / hr</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="security-metrics">
+              <div class="security-metric-block"><span class="security-metric-label">Critical</span><span class="security-metric-value">6</span></div>
+              <div class="security-metric-block"><span class="security-metric-label">High</span><span class="security-metric-value">5</span></div>
+              <div class="security-metric-block"><span class="security-metric-label">Medium</span><span class="security-metric-value">5</span></div>
             </div>
-            <div class="inference-pulse-alert-row">
-              <span class="ip-alert-dot ip-alert-warning"></span>
-              <span class="ip-alert-text">1 alert: Batch job #4812 has 12% failure rate.</span>
-              <a href="#" class="ip-alert-link">View Details</a>
-            </div>
-          </div>
-          <!-- Adoption State: for customers not yet using inference -->
-          <div class="inference-pulse-state inference-pulse-adoption" id="inference-pulse-adoption" hidden>
-            <h3 class="inference-pulse-adoption-headline">Start building with AI Inference</h3>
-            <p class="inference-pulse-adoption-body">Deploy models with serverless or GPU, run batch jobs at scale, and monitor performance and cost — all on DigitalOcean.</p>
-            <div class="inference-pulse-adoption-ctas">
-              <a href="#" class="inference-pulse-cta-primary" data-page="serverless-inference">Deploy a Model</a>
-              <a href="#" class="inference-pulse-cta-secondary" data-page="inference-overview">Learn More</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="card resource-health-card">
-          <h2 class="card-title">Resource health</h2>
-          <select class="resource-health-filter">
-            <option>Filter by resources — wordpress841onubuntu 4 GB / 2 Intel VCPUs / 120 GB</option>
-          </select>
-          <div class="health-charts-row">
-            <div class="health-chart">
-              <div class="health-chart-title">CPU %</div>
-              <div class="health-chart-placeholder health-chart-cpu"></div>
-            </div>
-            <div class="health-chart">
-              <div class="health-chart-title">Disk Usage</div>
-              <div class="health-chart-placeholder health-chart-disk"></div>
-            </div>
-            <div class="health-chart">
-              <div class="health-chart-title">Memory usage</div>
-              <div class="health-chart-placeholder health-chart-mem"></div>
-            </div>
-          </div>
-        </section>
+            <p class="security-summary-text">You have 6 Critical alerts that need your immediate attention.</p>
+          </section>
+        </div>
 
         <section class="card billing-card">
-          <div class="card-title-row">
+          <div class="card-title-row card-header-with-link">
             <h2 class="card-title">Billing Overview</h2>
             <a href="#" class="card-link">View Billing →</a>
           </div>
           <div class="billing-metrics home-billing-metrics">
             <div class="billing-metric"><span class="billing-label">Current Spend</span><span class="billing-value">$100.34</span></div>
-            <div class="billing-metric"><span class="billing-label">Daily Avg</span><span class="billing-value">$13.21</span></div>
-            <div class="billing-metric"><span class="billing-label">Top cost model for your agent</span><span class="billing-value">$13.21</span></div>
-            <div class="billing-metric"><span class="billing-label">Projected Spend</span><span class="billing-value">$412.42</span></div>
+            <div class="billing-metric"><span class="billing-label">Daily Avg.</span><span class="billing-value">$13.21</span></div>
+            <div class="billing-metric billing-metric-projected">
+              <span class="billing-label">Projected Spend</span>
+              <span class="billing-value-wrap"><span class="billing-value">$412.42</span><span class="billing-spark-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span><button type="button" class="billing-q" aria-label="Help">?</button></span>
+            </div>
           </div>
-          <p class="billing-summary-text">You're being billed for 15 resources with a $2,340 monthly run rate. Your most expensive resource is a 16GB Droplet in NYC3 at $480/month.</p>
+          <div class="billing-ai-summary-block">
+            <div class="billing-ai-heading">
+              <span class="billing-ai-icon-wrap" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="18" height="18"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span>
+              <span class="billing-ai-label">AI Generated Summary</span>
+              <button type="button" class="billing-q" aria-label="Help">?</button>
+            </div>
+            <p class="billing-summary-text">You're being billed for 15 resources with a $2,340 monthly run rate. Your most expensive resource is a 16GB Droplet in NYC3 at $480/month.</p>
+          </div>
         </section>
 
-        <div class="two-col">
-          <section class="card security-card">
-            <div class="card-title-row">
-              <h2 class="card-title">Security alerts</h2>
-              <a href="#" class="card-link">Go to Security →</a>
+        <section class="card resource-health-card">
+          <div class="resource-health-header">
+            <h2 class="card-title">Resource health</h2>
+            <div class="resource-health-filters">
+              <span class="resource-health-filter-label">Filter by resources</span>
+              <div class="resource-health-resource-dropdown">
+                <svg class="resource-health-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M19.78 4.22l-1.42 1.42M5.64 18.36l-1.42 1.42"/></svg>
+                <div class="resource-health-resource-text">
+                  <span class="resource-health-resource-name">wordpress641onunbuntu</span>
+                  <span class="resource-health-resource-spec">4 GB / 2 Intel vCPUs / 120 GB / SF</span>
+                </div>
+                <svg class="resource-health-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <select class="resource-health-time">
+                <option>6 hours</option>
+              </select>
             </div>
-            <div class="security-content">
-              <p class="security-summary">Critical (6) · High (5) · Medium (5)</p>
-              <p class="security-bold">You have 6 Critical alerts that need your immediate attention.</p>
+          </div>
+          <div class="health-charts-container">
+            <div class="health-chart-panel">
+              <div class="health-chart-title">CPU %</div>
+              <div class="health-chart-inner">
+                <div class="health-chart-y-axis"><span>3%</span><span>2%</span><span>1%</span><span>0%</span></div>
+                <div class="health-chart-area-wrap">
+                  <div class="health-chart-svg-wrap">
+                    <svg class="health-chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="cpu-fill" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#dffbba"/><stop offset="100%" stop-color="#f0fdf4"/></linearGradient></defs>
+                      <path class="health-chart-area health-chart-area-cpu" fill="url(#cpu-fill)" d="M 0 100 L 0 100 L 20 60 L 40 97 L 60 17 L 80 100 L 100 100 L 100 100 Z"/>
+                      <path class="health-chart-line health-chart-line-cpu" fill="none" stroke="#98dd5b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M 0 100 L 20 60 L 40 97 L 60 17 L 80 100 L 100 100"/>
+                    </svg>
+                  </div>
+                  <div class="health-chart-x-axis"><span>15:16</span><span>15:20</span><span>15:24</span><span>15:28</span><span>15:32</span><span>15:36</span></div>
+                </div>
+              </div>
             </div>
-          </section>
-          <section class="card monitoring-card">
-            <div class="card-title-row">
-              <h2 class="card-title">Droplet Monitoring</h2>
-              <a href="#" class="card-link">Go to Monitoring →</a>
+            <div class="health-chart-panel health-chart-panel-sep">
+              <div class="health-chart-title">Disk Usage</div>
+              <div class="health-chart-inner">
+                <div class="health-chart-y-axis"><span>7%</span><span>6%</span><span>5%</span><span>4%</span></div>
+                <div class="health-chart-area-wrap">
+                  <div class="health-chart-svg-wrap">
+                    <svg class="health-chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="disk-fill" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#dafbfd"/><stop offset="100%" stop-color="#f0fdfa"/></linearGradient></defs>
+                      <path class="health-chart-area health-chart-area-disk" fill="url(#disk-fill)" d="M 0 100 L 20 100 L 40 100 L 60 100 L 80 17 L 100 100 L 100 100 Z"/>
+                      <path class="health-chart-line health-chart-line-disk" fill="none" stroke="#4dddee" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M 0 100 L 20 100 L 40 100 L 60 100 L 80 17 L 100 100"/>
+                    </svg>
+                  </div>
+                  <div class="health-chart-x-axis"><span>15:40</span><span>15:44</span><span>15:48</span><span>15:52</span><span>15:56</span><span>16:00</span></div>
+                </div>
+              </div>
             </div>
-            <div class="monitoring-content">
-              <p class="security-summary">All Alerts (5) · SRE enabled (5)</p>
-              <p class="monitoring-bold">You have 4 investigations ready to view.</p>
+            <div class="health-chart-panel health-chart-panel-sep">
+              <div class="health-chart-title">Memory usage</div>
+              <div class="health-chart-inner">
+                <div class="health-chart-y-axis"><span>11%</span><span>10%</span><span>9%</span><span>8%</span></div>
+                <div class="health-chart-area-wrap">
+                  <div class="health-chart-svg-wrap">
+                    <svg class="health-chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="mem-fill" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#eadafd"/><stop offset="100%" stop-color="#f5f3ff"/></linearGradient></defs>
+                      <path class="health-chart-area health-chart-area-mem" fill="url(#mem-fill)" d="M 0 100 L 20 100 L 20 17 L 40 17 L 60 17 L 80 17 L 100 17 L 100 100 Z"/>
+                      <path class="health-chart-line health-chart-line-mem" fill="none" stroke="#b35bee" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M 0 100 L 20 100 L 20 17 L 40 17 L 60 17 L 80 17 L 100 17"/>
+                    </svg>
+                  </div>
+                  <div class="health-chart-x-axis"><span>16:04</span><span>16:08</span><span>16:12</span><span>16:16</span><span>16:20</span><span>16:24</span></div>
+                </div>
+              </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
+
+        <section class="card daily-tide-card">
+          <div class="daily-tide-header">
+            <h2 class="card-title">The Daily Tide</h2>
+            <div class="daily-tide-tabs">
+              <button type="button" class="daily-tide-tab active"><svg class="daily-tide-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg> Blogs</button>
+              <button type="button" class="daily-tide-tab"><svg class="daily-tide-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Tutorials <span class="daily-tide-chevron">▾</span></button>
+            </div>
+          </div>
+          <div class="daily-tide-grid">
+            <div class="daily-tide-item">
+              <span class="daily-tide-cat">Category</span>
+              <h3 class="daily-tide-title">How to Run MoltBot with DigitalOcean's One-Click Deploy</h3>
+              <p class="daily-tide-date">Jan 29, 2026</p>
+              <a href="#" class="daily-tide-view">View <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+            <div class="daily-tide-item">
+              <span class="daily-tide-cat">Category</span>
+              <h3 class="daily-tide-title">Deploying a WordPress Site on DigitalOcean</h3>
+              <p class="daily-tide-date">Feb 15, 2026</p>
+              <a href="#" class="daily-tide-view">View <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+            <div class="daily-tide-item">
+              <span class="daily-tide-cat">Category</span>
+              <h3 class="daily-tide-title">Setting Up a MongoDB Database in the Cloud</h3>
+              <p class="daily-tide-date">Mar 5, 2026</p>
+              <a href="#" class="daily-tide-view">View <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+            <div class="daily-tide-item">
+              <span class="daily-tide-cat">Category</span>
+              <h3 class="daily-tide-title">How to Run MoltBot with DigitalOcean's One-Click Deploy</h3>
+              <p class="daily-tide-date">Jan 29, 2026</p>
+              <a href="#" class="daily-tide-view">View <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+            <div class="daily-tide-item">
+              <span class="daily-tide-cat">Category</span>
+              <h3 class="daily-tide-title">Deploying a WordPress Site on DigitalOcean</h3>
+              <p class="daily-tide-date">Feb 15, 2026</p>
+              <a href="#" class="daily-tide-view">View <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+            <div class="daily-tide-item">
+              <span class="daily-tide-cat">Category</span>
+              <h3 class="daily-tide-title">Setting Up a MongoDB Database in the Cloud</h3>
+              <p class="daily-tide-date">Mar 5, 2026</p>
+              <a href="#" class="daily-tide-view">View <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </section>
       </main>
       </div>
       <!-- Build App page -->
@@ -1455,6 +1591,12 @@ for chunk in response:
           </main>
 
           <aside class="gd-summary">
+            <div class="gd-tier-success-banner" id="gd-tier-success-banner" hidden>
+              <span class="gd-tier-success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="24" height="24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+              <span class="gd-tier-success-msg">Great! Your tier has been increased.</span>
+              <a href="#" class="gd-tier-success-view-billing" id="gd-view-billing-link" data-page="billing">View Billing.</a>
+              <button type="button" class="gd-tier-success-close" id="gd-tier-success-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+            </div>
             <h2 class="gd-summary-title">Summary</h2>
             <div class="gd-summary-gpu">
               <div class="gd-summary-gpu-head">
@@ -1499,6 +1641,191 @@ for chunk in response:
           </aside>
         </div>
       </div>
+
+      <!-- Agent Marketplace page (AI Agents under Marketplace) -->
+      <div class="page-content page-agent-marketplace" id="page-agent-marketplace" hidden>
+        <main class="main-content am-main">
+          <h1 class="am-title">Agent Marketplace</h1>
+          <div class="am-filters">
+            <div class="am-filter-group">
+              <label class="am-filter-label" for="am-solution-categories">Solution categories</label>
+              <select class="am-select" id="am-solution-categories">
+                <option>FinOps</option>
+              </select>
+            </div>
+            <div class="am-filter-group">
+              <label class="am-filter-label" for="am-use-cases">Use cases</label>
+              <select class="am-select" id="am-use-cases">
+                <option>Reduce your costs</option>
+              </select>
+            </div>
+          </div>
+
+          <section class="am-section">
+            <h2 class="am-section-title">Enhance your DigitalOcean workflows</h2>
+            <div class="am-grid am-grid-2">
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">FinOps Optimizer</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Stop overpaying for compute. This agent automatically right-sizes your instances and finds savings you're missing.</p>
+                <div class="am-card-tags"><span class="am-tag">DO</span><span class="am-tag">Add-ons</span><span class="am-tag">FinOps</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Security Compliance</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Stop chasing compliance manually. This agent monitors, detects, and fixes security issues before auditors find them.</p>
+                <div class="am-card-tags"><span class="am-tag">DO</span><span class="am-tag">Add-ons</span><span class="am-tag">Security</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Kubernetes Autopilot</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Let someone else babysit your clusters. This agent handles scaling, updates, and incidents while you sleep.</p>
+                <div class="am-card-tags"><span class="am-tag">DO</span><span class="am-tag">Add-ons</span><span class="am-tag">DevOps</span><span class="am-tag">Kubernetes</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Database Performance</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Your database is slow and you don't know why. This agent finds the problem and fixes it—no DBA required.</p>
+                <div class="am-card-tags"><span class="am-tag">DO</span><span class="am-tag">Add-ons</span><span class="am-tag">DevOps</span><span class="am-tag">Databases</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="am-section">
+            <h2 class="am-section-title">Boost your productivity with AI Agents</h2>
+            <div class="am-grid am-grid-3">
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Cost Analyzer</h3>
+                <p class="am-card-subtitle">Koku Cost Management</p>
+                <p class="am-card-desc">Gain complete visibility into your cloud spend. This agent provides detailed cost breakdowns and optimization recommendations.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-ons</span><span class="am-tag">FinOps</span></div>
+                <button type="button" class="am-card-btn">Add Cost Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Threat Monitor</h3>
+                <p class="am-card-subtitle">Falco</p>
+                <p class="am-card-desc">Detect threats and policy violations in real time. This agent monitors your infrastructure and alerts you to suspicious activity.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">Security</span></div>
+                <button type="button" class="am-card-btn">Add Threat Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Statista Single Answer</h3>
+                <p class="am-card-subtitle">Statista</p>
+                <p class="am-card-desc">Answer single questions using Statista exclusive data. It provides concise answers, delivering a summary response.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">Monitoring</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Kubernetes Dashboard</h3>
+                <p class="am-card-subtitle">Kubernetes Monitoring</p>
+                <p class="am-card-desc">Simplify Kubernetes management. This agent provides a visual interface for monitoring and controlling your clusters.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">DevOps</span><span class="am-tag">Kubernetes</span></div>
+                <button type="button" class="am-card-btn">Add K8s Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Security Compliance</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Stop chasing compliance manually. This agent monitors, detects, and fixes security issues before auditors find them.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">Security</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">API Gateway Integration</h3>
+                <p class="am-card-subtitle">Cloudflare Workers Agent</p>
+                <p class="am-card-desc">This agent manages your serverless functions, automating deployments and scaling without any hassle.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">DevOps</span><span class="am-tag">Serverless Framework</span></div>
+                <button type="button" class="am-card-btn">Add Serverless Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">FinOps Optimizer</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Stop overpaying for compute. This agent automatically right-sizes your instances and finds savings you're missing.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">FinOps</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">Security Compliance</h3>
+                <p class="am-card-subtitle">DigitalOcean AI Agent</p>
+                <p class="am-card-desc">Stop chasing compliance manually. This agent monitors, detects, and fixes security issues before auditors find them.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">Security</span></div>
+                <button type="button" class="am-card-btn">Add AI Agent</button>
+              </div>
+              <div class="am-card">
+                <div class="am-card-icon"></div>
+                <h3 class="am-card-title">API Gateway Integration</h3>
+                <p class="am-card-subtitle">Cloudflare Workers Agent</p>
+                <p class="am-card-desc">This agent manages your serverless functions, automating deployments and scaling without any hassle.</p>
+                <div class="am-card-tags"><span class="am-tag">Add-Ons</span><span class="am-tag">DevOps</span><span class="am-tag">Serverless Framework</span></div>
+                <button type="button" class="am-card-btn">Add Serverless Agent</button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- Billing page (no nav entry; from View Billing / Return to billing overview) -->
+      <div class="page-content page-billing" id="page-billing" hidden>
+        <main class="main-content billing-main">
+          <h1 class="billing-page-title">Billing</h1>
+          <section class="card billing-page-card">
+            <h2 class="card-title">Billing Overview</h2>
+            <div class="billing-metrics billing-page-metrics">
+              <div class="billing-metric"><span class="billing-label">Current Spend</span><span class="billing-value">$100.34</span></div>
+              <div class="billing-metric"><span class="billing-label">Daily Avg.</span><span class="billing-value">$13.21</span></div>
+              <div class="billing-metric"><span class="billing-label">Projected Spend</span><span class="billing-value">$412.42</span></div>
+              <div class="billing-metric"><span class="billing-label">Account Credit</span><span class="billing-value billing-value-credit">$50.00</span></div>
+            </div>
+            <div class="billing-prepayment-notice">
+              <span class="billing-prepayment-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+              <div>
+                <strong>Prepayment applied</strong>
+                <p>Your $50 prepayment has been added as account credit. It will be automatically applied towards future DigitalOcean resource usage. You only pay for what you use.</p>
+              </div>
+            </div>
+            <div class="billing-ai-summary-block">
+              <div class="billing-ai-heading">
+                <span class="billing-ai-icon-wrap" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="18" height="18"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span>
+                <span class="billing-ai-label">AI Generated Summary</span>
+              </div>
+              <p class="billing-summary-text">You're being billed for 15 resources with a $2,340 monthly run rate. Your account has $50 in credit from your recent limit increase prepayment. Your most expensive resource is a 16GB Droplet in NYC3 at $480/month.</p>
+            </div>
+          </section>
+          <section class="card billing-invoice-card">
+            <h2 class="card-title">Recent activity</h2>
+            <table class="billing-activity-table">
+              <thead>
+                <tr><th>Date</th><th>Description</th><th>Amount</th></tr>
+              </thead>
+              <tbody>
+                <tr class="billing-activity-credit">
+                  <td>Mar 3, 2026</td>
+                  <td>Prepayment — Limit increase (Tier 2)</td>
+                  <td><span class="billing-amount-credit">+$50.00</span> (credit)</td>
+                </tr>
+                <tr><td>Mar 1, 2026</td><td>Monthly usage — February 2026</td><td>-$100.34</td></tr>
+                <tr><td>Feb 15, 2026</td><td>Droplet — 16GB NYC3</td><td>-$48.20</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </main>
+      </div>
+
     </div>
   </div>
 
@@ -1510,23 +1837,26 @@ for chunk in response:
         <button type="button" class="gd-limit-modal-close" id="gd-limit-modal-close" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       </div>
       <div class="gd-limit-modal-body">
-        <!-- Step 1: Choose Prepay or Support ticket -->
+        <!-- Step 1: Choose Prepay or Support ticket (match image 3) -->
         <div class="gd-limit-step" id="gd-limit-step1">
-          <p class="gd-limit-modal-intro">You've currently reached the limit for GPU Droplets. Let's find a way to increase your resource limits.</p>
-          <a href="#" class="gd-limit-modal-link">Learn more about limits.</a>
-          <div class="gd-limit-options">
+          <p class="gd-limit-modal-intro">You are currently assigned to Tier 1 limits. To increase your resource limits, you can submit a request to support or prepay to increase your resource limits and monthly billing threshold.</p>
+          <a href="#" class="gd-limit-modal-link">Learn more about limits. <span class="gd-ext-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span></a>
+          <div class="gd-limit-options gd-limit-options-two-col">
             <button type="button" class="gd-limit-option gd-limit-option-selected" id="gd-limit-option-prepay" data-value="prepay">
               <span class="gd-limit-option-radio gd-limit-option-radio-selected"></span>
               <div class="gd-limit-option-text">
-                <strong>Prepay</strong>
-                <p>Prepay to immediately increase your limits. This is a one-time payment that will be added as account credit.</p>
+                <div class="gd-limit-option-head">
+                  <strong>Prepay for Immediate Unlock</strong>
+                  <span class="gd-limit-option-badge">FASTEST</span>
+                </div>
+                <p>Automatically unlock a limit increase. This is a one time pre-payment that will be automatically applied as account credit towards future DigitalOcean resource usage. You only pay for what you use.</p>
               </div>
             </button>
             <button type="button" class="gd-limit-option" id="gd-limit-option-ticket" data-value="ticket">
               <span class="gd-limit-option-radio"></span>
               <div class="gd-limit-option-text">
                 <strong>Submit a support ticket</strong>
-                <p>Submit a request to our support team. They'll review and approve higher limits. This may take 1-2 business days.</p>
+                <p>Support will manually review your account information to determine if you are eligible for a limit increase. This process may take 3-5 business days.</p>
               </div>
             </button>
           </div>
@@ -1628,7 +1958,7 @@ for chunk in response:
             <div><span class="gd-limit-upgrade-label">New Tier:</span> <span id="gd-receipt-tier">Tier 2</span></div>
           </div>
           <div class="gd-limit-step3-footer">
-            <a href="#" class="gd-limit-modal-link">Return to billing overview</a>
+            <a href="#" class="gd-limit-modal-link" id="gd-return-billing-link" data-page="billing">Return to billing overview</a>
             <button type="button" class="gd-limit-modal-btn gd-limit-modal-btn-primary" id="gd-limit-done-btn">Done</button>
           </div>
         </div>
@@ -1784,7 +2114,10 @@ for chunk in response:
           e.preventDefault();
           e.stopPropagation();
           var pageId = target.getAttribute('data-page');
-          if (pageId) showPage(pageId);
+          if (pageId) {
+            if (pageId === 'billing' && gdLimitModal && !gdLimitModal.hidden) closeGdLimitModal();
+            showPage(pageId);
+          }
         }
       });
       var modelModal = document.getElementById('model-modal-overlay');
@@ -1886,7 +2219,14 @@ for chunk in response:
         var selected = document.querySelector('.gd-limit-tier-selectable.gd-limit-tier-selected');
         if (selected && !gdLimitPayBtn.disabled) showGdLimitStep3(selected.getAttribute('data-amount'), selected.getAttribute('data-threshold'), selected.getAttribute('data-tier-name'));
       });
-      if (gdLimitDoneBtn) gdLimitDoneBtn.addEventListener('click', closeGdLimitModal);
+      var gdTierSuccessBanner = document.getElementById('gd-tier-success-banner');
+      var gdTierSuccessClose = document.getElementById('gd-tier-success-close');
+      if (gdLimitDoneBtn) gdLimitDoneBtn.addEventListener('click', function() {
+        closeGdLimitModal();
+        showPage('gpu-droplets');
+        if (gdTierSuccessBanner) gdTierSuccessBanner.hidden = false;
+      });
+      if (gdTierSuccessClose) gdTierSuccessClose.addEventListener('click', function() { if (gdTierSuccessBanner) gdTierSuccessBanner.hidden = true; });
       if (gdLimitModal) gdLimitModal.addEventListener('click', function(e) { if (e.target === gdLimitModal) closeGdLimitModal(); });
       var gdLimitModalInner = document.getElementById('gd-limit-modal');
       if (gdLimitModalInner) gdLimitModalInner.addEventListener('click', function(e) { e.stopPropagation(); });
