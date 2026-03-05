@@ -29,7 +29,7 @@
         <svg class="sidebar-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         <span class="nav-label">Home</span>
       </a>
-      <div class="nav-group expanded" data-nav-group>
+      <div class="nav-group" data-nav-group>
         <div class="nav-item has-chevron" data-toggle>
           <span class="nav-label">PROJECTS</span>
           <span class="chevron">⌃</span>
@@ -282,30 +282,6 @@
             <span class="home-metric-value">$103.23</span>
             <a href="#" class="home-metric-link">Learn more</a>
           </div>
-          <div class="home-metric-card home-team-limit-card">
-            <div class="home-team-limit-header">
-              <span class="home-team-limit-warning-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
-              <span class="home-team-limit-title">You're nearing the limit for your team</span>
-            </div>
-            <div class="home-team-limit-resource">
-              <div class="home-team-limit-resource-head">
-                <span class="home-team-limit-resource-name">GPU Droplet</span>
-                <span class="home-team-limit-resource-usage">8/10 used · 80%</span>
-              </div>
-              <div class="home-team-limit-bar-wrap"><div class="home-team-limit-bar" style="width:80%"></div></div>
-            </div>
-            <div class="home-team-limit-resource">
-              <div class="home-team-limit-resource-head">
-                <span class="home-team-limit-resource-name">Serverless Inference</span>
-                <span class="home-team-limit-resource-usage">8/10 used · 80%</span>
-              </div>
-              <div class="home-team-limit-bar-wrap"><div class="home-team-limit-bar" style="width:80%"></div></div>
-            </div>
-            <div class="home-team-limit-footer">
-              <a href="#" class="home-team-limit-learn" data-page="limits">Learn more about limits <span class="gd-ext-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span></a>
-              <button type="button" class="home-team-limit-btn" id="home-team-limit-increase-btn">Increase your limit</button>
-            </div>
-          </div>
         </div>
 
         <div class="quick-actions-row">
@@ -319,30 +295,11 @@
           </div>
         </div>
 
+        <div class="home-inference-limits-row">
         <section class="card inference-pulse-card">
           <div class="inference-pulse-header-row">
             <h2 class="card-title">Inference pulse</h2>
-            <div class="inference-pulse-feedback">
-              <span class="inference-pulse-feedback-text">Is this dashboard helpful?</span>
-              <button type="button" class="inference-pulse-feedback-btn" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></button>
-              <button type="button" class="inference-pulse-feedback-btn" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"/></svg></button>
-            </div>
-          </div>
-          <div class="inference-pulse-top">
-            <div class="inference-pulse-controls">
-              <div class="inference-pulse-select-wrap inference-pulse-select-all">
-                <svg class="inference-pulse-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 10v4h4"/><path d="M14 10h-4v4"/></svg>
-                <select class="inference-pulse-select"><option>All models</option></select>
-              </div>
-              <div class="inference-pulse-select-row">
-                <select class="inference-pulse-select"><option>Tokens in</option></select>
-                <select class="inference-pulse-select"><option>Last month</option></select>
-              </div>
-            </div>
-            <div class="inference-pulse-learn-block">
-              <a href="#" class="inference-pulse-learn" data-page="analyze-manage">Learn more about this →</a>
-              <p class="inference-pulse-desc">Includes usage from both API and Console</p>
-            </div>
+            <a href="#" class="card-link inference-pulse-goto" data-page="inference-overview">Go to inference hub →</a>
           </div>
           <div class="inference-pulse-chart-wrap">
             <div class="inference-pulse-chart" id="inference-pulse-stacked-chart">
@@ -400,6 +357,43 @@
             <div class="ip-legend-item"><span class="ip-legend-dot ip-legend-gray"></span><span>Other</span></div>
           </div>
         </section>
+        <section class="card home-current-plan-card">
+          <div class="home-current-plan-band"></div>
+          <div class="home-current-plan-header">
+            <h2 class="card-title">Current Plan</h2>
+            <a href="#" class="card-link" data-page="limits">Go to Limits →</a>
+          </div>
+          <div class="home-current-plan-tier">
+            <span class="home-current-plan-tier-avatar">A</span>
+            <span class="home-current-plan-tier-name">TIER 2</span>
+          </div>
+          <div class="home-current-plan-resource">
+            <div class="home-current-plan-resource-head">
+              <span class="home-current-plan-resource-name">Resource name</span>
+              <span class="home-current-plan-resource-usage">10/10 used · 100%</span>
+            </div>
+            <div class="home-current-plan-bar-wrap home-current-plan-bar-red"><div class="home-current-plan-bar" style="width:100%"></div></div>
+          </div>
+          <div class="home-current-plan-resource">
+            <div class="home-current-plan-resource-head">
+              <span class="home-current-plan-resource-name">Resource name</span>
+              <span class="home-current-plan-resource-usage">8/10 used · 89%</span>
+            </div>
+            <div class="home-current-plan-bar-wrap home-current-plan-bar-orange"><div class="home-current-plan-bar" style="width:89%"></div></div>
+          </div>
+          <div class="home-current-plan-resource">
+            <div class="home-current-plan-resource-head">
+              <span class="home-current-plan-resource-name">Resource name</span>
+              <span class="home-current-plan-resource-usage">8/10 used · 80%</span>
+            </div>
+            <div class="home-current-plan-bar-wrap home-current-plan-bar-orange"><div class="home-current-plan-bar" style="width:80%"></div></div>
+          </div>
+          <div class="home-current-plan-footer">
+            <a href="#" class="home-current-plan-learn" data-page="limits">Learn more about limits <span class="gd-ext-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span></a>
+            <button type="button" class="home-current-plan-btn" id="home-current-plan-increase-btn">Increase your limit</button>
+          </div>
+        </section>
+        </div>
 
         <div class="two-col home-projects-rec">
           <section class="card projects-card">
@@ -480,6 +474,53 @@
           </section>
         </div>
 
+        <section class="home-quick-starts-section">
+          <h2 class="home-quick-starts-title">Quick Starts</h2>
+          <div class="home-quick-starts-grid">
+            <a href="#" class="home-quick-start-card" data-page="build-app">
+              <div class="home-quick-start-icon home-quick-start-icon-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/><path d="M5 20l1.5-4.5L10 14l-4.5-1.5L5 8l4.5 1.5L10 14l-1.5 4.5L5 20z"/><path d="M19 20l-1.5-4.5L14 14l4.5 1.5L19 20l1.5-4.5L22 14l-4.5-1.5L19 8z"/></svg></div>
+              <h3 class="home-quick-start-name">AI Starter Kit</h3>
+              <p class="home-quick-start-price">$36.60/month</p>
+              <div class="home-quick-start-bottom"><p class="home-quick-start-desc">Build intelligent features with AI models</p><span class="home-quick-start-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a href="#" class="home-quick-start-card" data-page="build-app">
+              <div class="home-quick-start-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M8 11h4l2 4 2-8 4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h3 class="home-quick-start-name">Observability Starter Kit</h3>
+              <p class="home-quick-start-price">$36.60/month</p>
+              <div class="home-quick-start-bottom"><p class="home-quick-start-desc">Monitor applications and infrastructure</p><span class="home-quick-start-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a href="#" class="home-quick-start-card" data-page="build-app">
+              <div class="home-quick-start-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div>
+              <h3 class="home-quick-start-name">Data Starter Kit</h3>
+              <p class="home-quick-start-price">$36.60/month</p>
+              <div class="home-quick-start-bottom"><p class="home-quick-start-desc">Set up databases and data pipelines</p><span class="home-quick-start-arrow" aria-hidden="true">→</span></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="card billing-card home-billing-full">
+          <div class="card-title-row card-header-with-link">
+            <h2 class="card-title">Billing Overview</h2>
+            <a href="#" class="card-link" data-page="billing">View Billing →</a>
+          </div>
+          <div class="billing-metrics home-billing-metrics">
+            <div class="billing-metric"><span class="billing-label">Current Spend</span><span class="billing-value">$100.34</span></div>
+            <div class="billing-metric"><span class="billing-label">Daily Avg.</span><span class="billing-value">$13.21</span></div>
+            <div class="billing-metric billing-metric-projected">
+              <span class="billing-label">Projected Spend</span>
+              <span class="billing-value-wrap"><span class="billing-value">$412.42</span><span class="billing-spark-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span><button type="button" class="billing-q" aria-label="Help">?</button></span>
+            </div>
+          </div>
+          <div class="billing-ai-summary-block">
+            <div class="billing-ai-heading">
+              <span class="billing-ai-icon-wrap" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="18" height="18"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span>
+              <span class="billing-ai-label">AI Generated Summary</span>
+              <button type="button" class="billing-q" aria-label="Help">?</button>
+            </div>
+            <p class="billing-summary-text">You're being billed for 15 resources with a $2,340 monthly run rate. Your most expensive resource is a 16GB Droplet in NYC3 at $480/month.</p>
+          </div>
+        </section>
+
         <div class="two-col monitoring-security-row">
           <section class="card monitoring-card">
             <div class="card-title-row card-header-with-link">
@@ -513,29 +554,6 @@
             <p class="security-summary-text">You have 6 Critical alerts that need your immediate attention.</p>
           </section>
         </div>
-
-        <section class="card billing-card">
-          <div class="card-title-row card-header-with-link">
-            <h2 class="card-title">Billing Overview</h2>
-            <a href="#" class="card-link">View Billing →</a>
-          </div>
-          <div class="billing-metrics home-billing-metrics">
-            <div class="billing-metric"><span class="billing-label">Current Spend</span><span class="billing-value">$100.34</span></div>
-            <div class="billing-metric"><span class="billing-label">Daily Avg.</span><span class="billing-value">$13.21</span></div>
-            <div class="billing-metric billing-metric-projected">
-              <span class="billing-label">Projected Spend</span>
-              <span class="billing-value-wrap"><span class="billing-value">$412.42</span><span class="billing-spark-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span><button type="button" class="billing-q" aria-label="Help">?</button></span>
-            </div>
-          </div>
-          <div class="billing-ai-summary-block">
-            <div class="billing-ai-heading">
-              <span class="billing-ai-icon-wrap" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor" width="18" height="18"><path d="M8 0l1.5 4.5L14 6l-4.5 1.5L8 12l-1.5-4.5L2 6l4.5-1.5L8 0z"/></svg></span>
-              <span class="billing-ai-label">AI Generated Summary</span>
-              <button type="button" class="billing-q" aria-label="Help">?</button>
-            </div>
-            <p class="billing-summary-text">You're being billed for 15 resources with a $2,340 monthly run rate. Your most expensive resource is a 16GB Droplet in NYC3 at $480/month.</p>
-          </div>
-        </section>
 
         <section class="card resource-health-card">
           <div class="resource-health-header">
@@ -2462,8 +2480,8 @@ for chunk in response:
       var limitsIncreaseBtn2 = document.getElementById('limits-increase-limit-btn-2');
       if (limitsIncreaseBtn) limitsIncreaseBtn.addEventListener('click', openGdLimitModal);
       if (limitsIncreaseBtn2) limitsIncreaseBtn2.addEventListener('click', openGdLimitModal);
-      var homeTeamLimitIncreaseBtn = document.getElementById('home-team-limit-increase-btn');
-      if (homeTeamLimitIncreaseBtn) homeTeamLimitIncreaseBtn.addEventListener('click', openGdLimitModal);
+      var homeCurrentPlanIncreaseBtn = document.getElementById('home-current-plan-increase-btn');
+      if (homeCurrentPlanIncreaseBtn) homeCurrentPlanIncreaseBtn.addEventListener('click', openGdLimitModal);
       if (gdLimitModalClose) gdLimitModalClose.addEventListener('click', closeGdLimitModal);
       document.querySelectorAll('#gd-limit-modal-cancel, #gd-limit-modal-cancel2').forEach(function(btn) { if (btn) btn.addEventListener('click', closeGdLimitModal); });
       if (gdLimitOptionPrepay) gdLimitOptionPrepay.addEventListener('click', function() { gdLimitOptionPrepay.classList.add('gd-limit-option-selected'); gdLimitOptionPrepay.querySelector('.gd-limit-option-radio').classList.add('gd-limit-option-radio-selected'); if (gdLimitOptionTicket) { gdLimitOptionTicket.classList.remove('gd-limit-option-selected'); gdLimitOptionTicket.querySelector('.gd-limit-option-radio').classList.remove('gd-limit-option-radio-selected'); } });
