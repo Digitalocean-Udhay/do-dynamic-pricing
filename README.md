@@ -6,14 +6,24 @@ Dedicated inference prototype: **Contract** vs **Dynamic** GPU pricing UI (dashb
 
 **https://digitalocean-udhay.github.io/do-dynamic-pricing/**
 
-### Enable Pages (one time)
+### Fix a 404 (pick one)
 
-1. Repository: [Digitalocean-Udhay/do-dynamic-pricing](https://github.com/Digitalocean-Udhay/do-dynamic-pricing)
-2. **Settings** → **Pages** → **Build and deployment** → **Source**: **GitHub Actions**
-3. **Actions** → open **Deploy do-dynamic-pricing to Pages** → confirm the latest run succeeded (green).  
-   If needed, use **Run workflow**.
+#### Option A — Fastest (no workflow): publish from `main`
 
-Source files for the live site live in the [`do-dynamic-pricing/`](./do-dynamic-pricing/) folder; the workflow publishes that folder as the site root.
+Your repo already has `index.html` and `styles.css` at the **repository root**.
+
+1. Open [repo Settings → Pages](https://github.com/Digitalocean-Udhay/do-dynamic-pricing/settings/pages).
+2. **Build and deployment** → **Source**: **Deploy from a branch** (not “GitHub Actions”).
+3. **Branch**: `main`, **Folder**: `/ (root)` → **Save**.
+4. Wait 1–2 minutes, then refresh the site URL above.
+
+#### Option B — Publish from `do-dynamic-pricing/` via automation
+
+1. Ensure **Actions** are allowed: **Settings → Actions → General** (read/write for workflows).
+2. Push to `main` (or **Actions → Deploy site to gh-pages → Run workflow**).
+3. When the workflow is green, **Settings → Pages** → **Source**: **Deploy from a branch** → **Branch**: `gh-pages`, **Folder**: `/ (root)` → **Save**.
+
+The workflow copies [`do-dynamic-pricing/`](./do-dynamic-pricing/) onto the `gh-pages` branch.
 
 ## Local preview
 

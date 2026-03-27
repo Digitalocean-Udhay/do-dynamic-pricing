@@ -6,7 +6,7 @@ This directory is what GitHub Pages publishes as the **website root**.
 
 **https://digitalocean-udhay.github.io/do-dynamic-pricing/**
 
-Enable **Settings → Pages → Source: GitHub Actions** on [Digitalocean-Udhay/do-dynamic-pricing](https://github.com/Digitalocean-Udhay/do-dynamic-pricing), then run or wait for **Deploy do-dynamic-pricing to Pages**.
+If you see **404**: in repo **Settings → Pages**, use **Deploy from a branch** → `main` + **/ (root)** (repo root has `index.html`), or run the **Deploy site to gh-pages** workflow and set branch **`gh-pages`** + **/ (root)**.
 
 ## Local preview
 

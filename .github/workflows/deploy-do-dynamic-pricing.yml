@@ -1,5 +1,6 @@
-# Publishes do-dynamic-pricing/ as the site root on GitHub Pages.
-name: Deploy do-dynamic-pricing to Pages
+# Pushes do-dynamic-pricing/ to branch gh-pages so Pages can use "Deploy from a branch".
+# (Artifact-based Pages often 404s on org repos until Actions + environments are fully approved.)
+name: Deploy site to gh-pages
 
 on:
   push:
@@ -7,32 +8,22 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: "pages"
+  group: gh-pages-deploy
   cancel-in-progress: true
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy do-dynamic-pricing to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: do-dynamic-pricing
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          branch: gh-pages
+          folder: do-dynamic-pricing
+          clean: true
