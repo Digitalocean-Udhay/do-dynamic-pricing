@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
         <a href="#" class="nav-sub-item" id="nav-build-app" data-page="build-app">Quick Start</a>
         <div class="nav-group expanded">
           <div class="nav-item has-chevron" data-toggle>
-            <span class="nav-label">Inference Hub</span>
+            <span class="nav-label">Inference</span>
             <span class="chevron">⌃</span>
           </div>
           <div class="nav-sub">
@@ -184,7 +184,7 @@
               <div class="create-menu-section">
                 <div class="create-menu-category">INFERENCE</div>
                 <a href="#" class="create-menu-item" role="menuitem"><span class="create-menu-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></span> Serverless Inference</a>
-                <a href="#" class="create-menu-item" role="menuitem" data-page="dedicated-inference"><span class="create-menu-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></span> Dedicated Inference</a>
+                <a href="#" class="create-menu-item" role="menuitem" data-page="dedicated-inference"><span class="create-menu-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></span> Inference Hub</a>
                 <a href="#" class="create-menu-item" role="menuitem"><span class="create-menu-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></span> Batch Inference</a>
                 <a href="#" class="create-menu-item" role="menuitem"><span class="create-menu-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></span> AI Agent</a>
               </div>
@@ -1945,7 +1945,7 @@ for chunk in response:
             <span class="di-tab">Get Started</span>
             <span class="di-tab">Agent workspaces</span>
             <span class="di-tab">Serverless inference</span>
-            <span class="di-tab di-tab-active">Inference Hub <span class="di-preview-pill">PREVIEW</span></span>
+            <span class="di-tab di-tab-active" aria-current="page">Inference Hub <span class="di-preview-pill">PREVIEW</span></span>
             <span class="di-tab">Knowledge bases</span>
           </nav>
 
@@ -1956,7 +1956,7 @@ for chunk in response:
               </div>
               <h1 class="di-empty-title">You don't have any inferences</h1>
               <p class="di-empty-desc">Create your first inference to get started.</p>
-              <button type="button" class="di-btn-deploy-outline" id="di-btn-open-wizard">Deploy Dedicated Inference</button>
+              <button type="button" class="di-btn-deploy-outline" id="di-btn-open-wizard" data-action="open-inference-hub-deploy">Deploy Dedicated Inference</button>
             </div>
           </div>
         </div>
@@ -1969,7 +1969,7 @@ for chunk in response:
             <span class="di-tab">Get Started</span>
             <span class="di-tab">Agent workspaces</span>
             <span class="di-tab">Serverless inference</span>
-            <span class="di-tab di-tab-active">Inference Hub <span class="di-preview-pill">PREVIEW</span></span>
+            <span class="di-tab di-tab-active" aria-current="page">Inference Hub <span class="di-preview-pill">PREVIEW</span></span>
             <span class="di-tab">Knowledge bases</span>
           </nav>
 
@@ -3268,8 +3268,6 @@ for chunk in response:
 
       (function dedicatedInferenceProto() {
         var wizardPanel = document.getElementById('di-wizard-panel');
-        var openBtn = document.getElementById('di-btn-open-wizard');
-        var backBtn = document.getElementById('di-back-to-list');
         if (!wizardPanel) return;
 
         function syncDiPricingClass() {
@@ -3288,6 +3286,11 @@ for chunk in response:
           if (mw) mw.scrollTop = 0;
           window.scrollTo(0, 0);
           document.documentElement.scrollTop = 0;
+          var deployRoot = document.getElementById('page-dedicated-inference-deploy');
+          if (deployRoot) {
+            deployRoot.scrollTop = 0;
+            try { deployRoot.scrollIntoView({ block: 'start', behavior: 'auto' }); } catch (err1) { deployRoot.scrollIntoView(true); }
+          }
           requestAnimationFrame(function() {
             var region = document.getElementById('di-region');
             if (region && typeof region.focus === 'function') {
@@ -3296,35 +3299,23 @@ for chunk in response:
           });
         }
 
-        function bindDiClick(el, handler) {
-          if (!el) return;
-          el.addEventListener('click', function(e) {
+        document.addEventListener('click', function diInferenceHubNavCapture(e) {
+          var t = e.target;
+          if (!t || !t.closest) return;
+          if (t.closest('#di-btn-open-wizard') || t.closest('[data-action="open-inference-hub-deploy"]')) {
             e.preventDefault();
             e.stopPropagation();
-            handler();
-          });
-        }
-        bindDiClick(openBtn, openDedicatedDeploy);
-        bindDiClick(backBtn, function() { showPage('dedicated-inference'); });
-
-        function bindDiPageCapture(pageEl) {
-          if (!pageEl) return;
-          pageEl.addEventListener('click', function(e) {
-            var t = e.target;
-            if (!t || !t.closest) return;
-            if (t.closest('#di-btn-open-wizard')) {
-              e.preventDefault();
-              e.stopPropagation();
-              openDedicatedDeploy();
-            } else if (t.closest('#di-back-to-list')) {
-              e.preventDefault();
-              e.stopPropagation();
-              showPage('dedicated-inference');
-            }
-          }, true);
-        }
-        bindDiPageCapture(document.getElementById('page-dedicated-inference'));
-        bindDiPageCapture(document.getElementById('page-dedicated-inference-deploy'));
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            openDedicatedDeploy();
+            return;
+          }
+          if (t.closest('#di-back-to-list')) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            showPage('dedicated-inference');
+          }
+        }, true);
 
         var diFinalDeploy = document.getElementById('di-btn-final-deploy');
         if (diFinalDeploy) {
