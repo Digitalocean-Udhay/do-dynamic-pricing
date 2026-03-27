@@ -1,0 +1,41 @@
+# Publishes do-dynamic-pricing/ as the site root on GitHub Pages.
+name: Deploy do-dynamic-pricing to Pages
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "do-dynamic-pricing/**"
+      - ".github/workflows/deploy-do-dynamic-pricing.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: do-dynamic-pricing
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
