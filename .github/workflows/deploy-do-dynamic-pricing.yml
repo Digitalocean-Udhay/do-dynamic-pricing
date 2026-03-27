@@ -4,9 +4,6 @@ name: Deploy do-dynamic-pricing to Pages
 on:
   push:
     branches: ["main"]
-    paths:
-      - "do-dynamic-pricing/**"
-      - ".github/workflows/deploy-do-dynamic-pricing.yml"
   workflow_dispatch:
 
 permissions:
