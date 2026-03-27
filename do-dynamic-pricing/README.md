@@ -6,7 +6,7 @@ This directory is what GitHub Pages publishes as the **website root**.
 
 **https://digitalocean-udhay.github.io/do-dynamic-pricing/**
 
-Enable **Settings → Pages → Source: GitHub Actions** on [DigitalOcean-Udhay/do-dynamic-pricing](https://github.com/DigitalOcean-Udhay/do-dynamic-pricing), then run or wait for **Deploy do-dynamic-pricing to Pages**.
+Enable **Settings → Pages → Source: GitHub Actions** on [Digitalocean-Udhay/do-dynamic-pricing](https://github.com/Digitalocean-Udhay/do-dynamic-pricing), then run or wait for **Deploy do-dynamic-pricing to Pages**.
 
 ## Local preview
 

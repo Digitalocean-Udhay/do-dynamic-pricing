@@ -8,7 +8,7 @@ Dedicated inference prototype: **Contract** vs **Dynamic** GPU pricing UI (dashb
 
 ### Enable Pages (one time)
 
-1. Repository: [DigitalOcean-Udhay/do-dynamic-pricing](https://github.com/DigitalOcean-Udhay/do-dynamic-pricing)
+1. Repository: [Digitalocean-Udhay/do-dynamic-pricing](https://github.com/Digitalocean-Udhay/do-dynamic-pricing)
 2. **Settings** → **Pages** → **Build and deployment** → **Source**: **GitHub Actions**
 3. **Actions** → open **Deploy do-dynamic-pricing to Pages** → confirm the latest run succeeded (green).  
    If needed, use **Run workflow**.
