@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=14">
+  <link rel="stylesheet" href="styles.css?v=15">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -2007,7 +2007,7 @@ for chunk in response:
                 <div class="di-note" role="note">
                   <div class="di-note-title">Note</div>
                   <p class="di-note-text di-only-contract">Contract customers see SKUs included in their agreement.</p>
-                  <p class="di-note-text di-only-dynamic">Dynamic pricing reflects current spot rates.</p>
+                  <p class="di-note-text di-only-dynamic" hidden>Dynamic pricing reflects current spot rates.</p>
                   <p class="di-note-text di-only-contract">SKUs shown reflect capacity available under your contract. Hourly rates are defined in your agreement.</p>
                 </div>
 
@@ -3275,11 +3275,24 @@ for chunk in response:
         var wizardPanel = document.getElementById('di-wizard-panel');
         if (!wizardPanel) return;
 
+        function syncDiNoteVisibility(isDynamic) {
+          var note = wizardPanel.querySelector('.di-note');
+          if (!note) return;
+          note.querySelectorAll('.di-only-contract').forEach(function(el) {
+            el.hidden = isDynamic;
+          });
+          note.querySelectorAll('.di-only-dynamic').forEach(function(el) {
+            el.hidden = !isDynamic;
+          });
+        }
+
         function syncDiPricingClass() {
-          var r = document.querySelector('input[name="di-pricing"]:checked');
+          var r = wizardPanel.querySelector('input[name="di-pricing"]:checked');
           if (!r) return;
+          var isDynamic = r.value === 'dynamic';
           wizardPanel.classList.remove('di-mode-contract', 'di-mode-dynamic');
-          wizardPanel.classList.add(r.value === 'dynamic' ? 'di-mode-dynamic' : 'di-mode-contract');
+          wizardPanel.classList.add(isDynamic ? 'di-mode-dynamic' : 'di-mode-contract');
+          syncDiNoteVisibility(isDynamic);
         }
 
         function openDedicatedDeploy() {
@@ -3442,8 +3455,9 @@ for chunk in response:
           });
         }
 
-        document.querySelectorAll('input[name="di-pricing"]').forEach(function(r) {
-          r.addEventListener('change', function() { syncDiPricingClass(); });
+        wizardPanel.addEventListener('change', function(e) {
+          var t = e.target;
+          if (t && t.getAttribute('name') === 'di-pricing') syncDiPricingClass();
         });
 
         document.querySelectorAll('input[name="di-gpu"]').forEach(function(r) {
@@ -3470,6 +3484,7 @@ for chunk in response:
           updateDiSummary();
         });
 
+        syncDiPricingClass();
         syncGpuCardSelected();
         updateDiSummary();
         updateDiUrlPreview();
