@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
             <a href="#" class="nav-sub-item" id="nav-inference-overview" data-page="inference-overview">Overview</a>
             <a href="#" class="nav-sub-item" id="nav-explore-models" data-page="explore-models">Explore Models</a>
             <a href="#" class="nav-sub-item" id="nav-serverless-inference" data-page="serverless-inference">Run Inference</a>
-            <a href="#" class="nav-sub-item" id="nav-dedicated-inference" data-page="dedicated-inference">Dedicated inference <span class="nav-tag nav-tag-preview">PREVIEW</span></a>
+            <a href="#" class="nav-sub-item" id="nav-dedicated-inference" data-page="dedicated-inference">Inference Hub <span class="nav-tag nav-tag-preview">PREVIEW</span></a>
             <a href="#" class="nav-sub-item" id="nav-customize" data-page="customize">Customize</a>
             <a href="#" class="nav-sub-item" id="nav-analyze-manage" data-page="analyze-manage">Analyze & Manage</a>
           </div>
@@ -1945,11 +1945,11 @@ for chunk in response:
             <span class="di-tab">Get Started</span>
             <span class="di-tab">Agent workspaces</span>
             <span class="di-tab">Serverless inference</span>
-            <span class="di-tab di-tab-active">Dedicated inference <span class="di-preview-pill">PREVIEW</span></span>
+            <span class="di-tab di-tab-active">Inference Hub <span class="di-preview-pill">PREVIEW</span></span>
             <span class="di-tab">Knowledge bases</span>
           </nav>
 
-          <div class="di-workspace" id="di-empty-panel">
+          <div class="di-workspace">
             <div class="di-empty">
               <div class="di-empty-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#0069ff" stroke-width="1.5" width="40" height="40"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="8" y="14" width="7" height="7" rx="1"/></svg>
@@ -1959,11 +1959,24 @@ for chunk in response:
               <button type="button" class="di-btn-deploy-outline" id="di-btn-open-wizard">Deploy Dedicated Inference</button>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="di-wizard-wrap di-mode-contract" id="di-wizard-panel" hidden>
+      <!-- Dedicated inference: full-page deploy wizard (Contract + Dynamic pricing) -->
+      <div class="page-content page-dedicated-inference-deploy" id="page-dedicated-inference-deploy" hidden>
+        <div class="di-page-inner">
+          <nav class="di-top-tabs" aria-label="Inference product areas">
+            <span class="di-tab">Get Started</span>
+            <span class="di-tab">Agent workspaces</span>
+            <span class="di-tab">Serverless inference</span>
+            <span class="di-tab di-tab-active">Inference Hub <span class="di-preview-pill">PREVIEW</span></span>
+            <span class="di-tab">Knowledge bases</span>
+          </nav>
+
+          <div class="di-wizard-wrap di-mode-contract" id="di-wizard-panel">
             <div class="di-wizard-body">
               <main class="di-main">
-                <button type="button" class="di-back" id="di-back-to-list"><span class="di-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Back to Dedicated Inferences</button>
+                <button type="button" class="di-back" id="di-back-to-list"><span class="di-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Back to Inference Hub</button>
                 <h1 class="di-form-title">Create an Inference Deployment</h1>
 
                 <div class="di-field">
@@ -2066,12 +2079,14 @@ for chunk in response:
                   <input type="text" class="di-input" id="di-name" value="my-dedicated-inference" autocomplete="off" aria-describedby="di-name-hint">
                 </div>
 
-                <div class="di-field">
-                  <label class="di-label" for="di-url-preview-input">Web URL preview</label>
-                  <p class="di-helper" id="di-url-preview-desc">This is the HTTPS endpoint your clients will call after the deployment is ready.</p>
-                  <div class="di-url-preview-row">
-                    <input type="text" class="di-url-preview-input" id="di-url-preview-input" readonly value="" aria-readonly="true" title="Preview only — URL is assigned at deploy time">
-                    <button type="button" class="di-url-copy-btn" id="di-url-copy-btn">Copy</button>
+                <div class="di-field di-url-preview-field">
+                  <label class="di-label" for="di-url-preview-input" id="di-url-preview-label">URL preview</label>
+                  <p class="di-helper" id="di-url-preview-desc">Live preview of the HTTPS endpoint URL for this deployment (updates when you change region or name).</p>
+                  <div class="di-url-preview-card" role="group" aria-labelledby="di-url-preview-label">
+                    <div class="di-url-preview-row">
+                      <input type="text" class="di-url-preview-input" id="di-url-preview-input" readonly value="https://inference.do.co/dedicated/nyc2/my-dedicated-inference/v1/chat/completions" aria-readonly="true" title="URL preview — final URL assigned when you deploy" inputmode="url" autocomplete="off" spellcheck="false" dir="ltr">
+                      <button type="button" class="di-url-copy-btn" id="di-url-copy-btn">Copy URL</button>
+                    </div>
                   </div>
                 </div>
               </main>
@@ -2081,7 +2096,7 @@ for chunk in response:
                 <div class="di-summary-gpu">
                   <div class="di-summary-head">
                     <span class="di-summary-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-                    <span class="di-summary-label">Dedicated GPU</span>
+                    <span class="di-summary-label">Inference Hub</span>
                     <span class="di-summary-price di-only-dynamic" id="di-summary-hourly">$3.39/hr</span>
                     <span class="di-summary-contract di-only-contract" id="di-summary-contract-label">Contract</span>
                   </div>
@@ -2095,7 +2110,7 @@ for chunk in response:
                     <div><dt>RAM</dt><dd id="di-spec-ram">240 GB</dd></div>
                     <div><dt>Boot Disk</dt><dd>720 GiB</dd></div>
                     <div><dt>Scratch Disk</dt><dd>5 TiB</dd></div>
-                    <div class="di-summary-url-row"><dt>Web URL preview</dt><dd class="di-summary-url-dd"><span class="di-summary-url-text" id="di-summary-url-preview" title="">—</span></dd></div>
+                    <div class="di-summary-url-row"><dt>URL preview</dt><dd class="di-summary-url-dd"><span class="di-summary-url-text" id="di-summary-url-preview" title="">https://inference.do.co/dedicated/nyc2/my-dedicated-inference/v1/chat/completions</span></dd></div>
                   </dl>
                 </div>
                 <div class="di-summary-total di-only-dynamic">
@@ -2106,7 +2121,7 @@ for chunk in response:
                   <span>Billing</span>
                   <strong>Per your contract</strong>
                 </div>
-                <button type="button" class="di-btn-deploy">Deploy Dedicated Inference</button>
+                <button type="button" class="di-btn-deploy" id="di-btn-final-deploy">Deploy Dedicated Inference</button>
               </aside>
             </div>
           </div>
@@ -2927,14 +2942,12 @@ for chunk in response:
         document.querySelectorAll('.page-content').forEach(function(el) { el.hidden = true; });
         var page = document.getElementById('page-' + pageId);
         if (page) page.hidden = false;
-        if (pageId === 'dedicated-inference') {
-          var diEmpty = document.getElementById('di-empty-panel');
-          var diWizard = document.getElementById('di-wizard-panel');
-          if (diEmpty && diWizard) { diEmpty.hidden = false; diWizard.hidden = true; }
-        }
         document.querySelectorAll('.sidebar [data-page]').forEach(function(el) {
           el.classList.remove('active');
-          if (el.getAttribute('data-page') === pageId) el.classList.add('active');
+          var navPage = el.getAttribute('data-page');
+          if (navPage === pageId || (pageId === 'dedicated-inference-deploy' && navPage === 'dedicated-inference')) {
+            el.classList.add('active');
+          }
         });
       }
       var archCanvasStartOver = document.getElementById('arch-canvas-start-over');
@@ -3254,11 +3267,10 @@ for chunk in response:
       if (modalCopyEndpointBtn) modalCopyEndpointBtn.addEventListener('click', copyEndpoint);
 
       (function dedicatedInferenceProto() {
-        var emptyPanel = document.getElementById('di-empty-panel');
         var wizardPanel = document.getElementById('di-wizard-panel');
         var openBtn = document.getElementById('di-btn-open-wizard');
         var backBtn = document.getElementById('di-back-to-list');
-        if (!emptyPanel || !wizardPanel) return;
+        if (!wizardPanel) return;
 
         function syncDiPricingClass() {
           var r = document.querySelector('input[name="di-pricing"]:checked');
@@ -3267,24 +3279,23 @@ for chunk in response:
           wizardPanel.classList.add(r.value === 'dynamic' ? 'di-mode-dynamic' : 'di-mode-contract');
         }
 
-        function showDiList() {
-          emptyPanel.hidden = false;
-          wizardPanel.hidden = true;
-        }
-        function showDiWizard() {
-          emptyPanel.hidden = true;
-          wizardPanel.hidden = false;
+        function openDedicatedDeploy() {
+          showPage('dedicated-inference-deploy');
           syncDiPricingClass();
           updateDiSummary();
           updateDiUrlPreview();
+          var mw = document.querySelector('.main-wrapper');
+          if (mw) mw.scrollTop = 0;
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
           requestAnimationFrame(function() {
-            wizardPanel.scrollIntoView({ block: 'start', behavior: 'smooth' });
             var region = document.getElementById('di-region');
             if (region && typeof region.focus === 'function') {
               try { region.focus({ preventScroll: true }); } catch (err) { region.focus(); }
             }
           });
         }
+
         function bindDiClick(el, handler) {
           if (!el) return;
           el.addEventListener('click', function(e) {
@@ -3293,23 +3304,34 @@ for chunk in response:
             handler();
           });
         }
-        bindDiClick(openBtn, showDiWizard);
-        bindDiClick(backBtn, showDiList);
-        var diRootPage = document.getElementById('page-dedicated-inference');
-        if (diRootPage) {
-          diRootPage.addEventListener('click', function(e) {
+        bindDiClick(openBtn, openDedicatedDeploy);
+        bindDiClick(backBtn, function() { showPage('dedicated-inference'); });
+
+        function bindDiPageCapture(pageEl) {
+          if (!pageEl) return;
+          pageEl.addEventListener('click', function(e) {
             var t = e.target;
             if (!t || !t.closest) return;
             if (t.closest('#di-btn-open-wizard')) {
               e.preventDefault();
               e.stopPropagation();
-              showDiWizard();
+              openDedicatedDeploy();
             } else if (t.closest('#di-back-to-list')) {
               e.preventDefault();
               e.stopPropagation();
-              showDiList();
+              showPage('dedicated-inference');
             }
           }, true);
+        }
+        bindDiPageCapture(document.getElementById('page-dedicated-inference'));
+        bindDiPageCapture(document.getElementById('page-dedicated-inference-deploy'));
+
+        var diFinalDeploy = document.getElementById('di-btn-final-deploy');
+        if (diFinalDeploy) {
+          diFinalDeploy.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+          });
         }
 
         var gpuSpecs = {
@@ -3355,7 +3377,7 @@ for chunk in response:
             var previewInput = document.getElementById('di-url-preview-input');
             var url = previewInput ? previewInput.value : diBuildPreviewUrl();
             function done() {
-              var label = 'Copy';
+              var label = 'Copy URL';
               diUrlCopyBtn.textContent = 'Copied';
               setTimeout(function() { diUrlCopyBtn.textContent = label; }, 1600);
             }
@@ -3458,11 +3480,11 @@ for chunk in response:
 
         document.addEventListener('keydown', function(e) {
           if (e.key !== 'Escape') return;
-          var diPage = document.getElementById('page-dedicated-inference');
-          if (!diPage || diPage.hidden || wizardPanel.hidden) return;
+          var diDeploy = document.getElementById('page-dedicated-inference-deploy');
+          if (!diDeploy || diDeploy.hidden) return;
           if (modelModal && !modelModal.hidden) return;
           if (gdLimitModal && !gdLimitModal.hidden) return;
-          showDiList();
+          showPage('dedicated-inference');
         });
       })();
     })();
