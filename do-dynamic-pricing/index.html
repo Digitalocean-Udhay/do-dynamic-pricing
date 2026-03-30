@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=20">
+  <link rel="stylesheet" href="styles.css?v=21">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1988,6 +1988,76 @@ for chunk in response:
                   </select>
                 </div>
 
+                <div class="di-field di-model-section di-mode-model-opensource" id="di-model-section">
+                  <fieldset class="di-model-source-fieldset">
+                    <legend class="di-sr-only">Model source</legend>
+                    <div class="di-label" id="di-model-source-label">Model source</div>
+                    <div class="di-radio-row" role="radiogroup" aria-labelledby="di-model-source-label">
+                      <label class="di-radio-label">
+                        <input type="radio" name="di-model-source" value="opensource" class="di-radio-input" checked>
+                        <span class="di-radio-ui"></span>
+                        <span class="di-radio-text">Open-source</span>
+                      </label>
+                      <label class="di-radio-label">
+                        <input type="radio" name="di-model-source" value="custom" class="di-radio-input">
+                        <span class="di-radio-ui"></span>
+                        <span class="di-radio-text">Custom</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                  <div class="di-only-opensource">
+                    <h2 class="di-section-title">Select the Pre-trained HuggingFace Models you need to access</h2>
+                    <div class="di-model-list" role="radiogroup" aria-label="Open-source model">
+                      <label class="di-model-card di-model-card-selected">
+                        <input type="radio" name="di-model-os" value="nemotron-nano-12b" class="di-model-input" checked>
+                        <span class="di-model-radio"></span>
+                        <span class="di-model-body">
+                          <span class="di-model-name">NVIDIA-Nemotron-Nano-12B-v2-VL-BF16</span>
+                          <span class="di-model-meta">Nvidia · <button type="button" class="di-model-details-link">Details</button></span>
+                        </span>
+                      </label>
+                      <label class="di-model-card">
+                        <input type="radio" name="di-model-os" value="nemotron-30b" class="di-model-input">
+                        <span class="di-model-radio"></span>
+                        <span class="di-model-body">
+                          <span class="di-model-name">NVIDIA-Nemotron-3-Nano-30B-A3B-BF16</span>
+                          <span class="di-model-meta">Nvidia · <button type="button" class="di-model-details-link">Details</button></span>
+                        </span>
+                      </label>
+                      <label class="di-model-card">
+                        <input type="radio" name="di-model-os" value="deepseek-r1" class="di-model-input">
+                        <span class="di-model-radio"></span>
+                        <span class="di-model-body">
+                          <span class="di-model-name">DeepSeek-R1</span>
+                          <span class="di-model-meta">DeepSeek AI · <button type="button" class="di-model-details-link">Details</button></span>
+                        </span>
+                      </label>
+                      <label class="di-model-card">
+                        <input type="radio" name="di-model-os" value="deepseek-v3" class="di-model-input">
+                        <span class="di-model-radio"></span>
+                        <span class="di-model-body">
+                          <span class="di-model-name">DeepSeek-V3</span>
+                          <span class="di-model-meta">DeepSeek AI · <button type="button" class="di-model-details-link">Details</button></span>
+                        </span>
+                      </label>
+                      <label class="di-model-card">
+                        <input type="radio" name="di-model-os" value="llama-31-8b" class="di-model-input">
+                        <span class="di-model-radio"></span>
+                        <span class="di-model-body">
+                          <span class="di-model-name">Llama-3.1-8B-Instruct</span>
+                          <span class="di-model-meta">Meta Llama · <button type="button" class="di-model-details-link">Details</button></span>
+                        </span>
+                      </label>
+                    </div>
+                    <button type="button" class="di-model-more-btn" id="di-model-see-more">See more models</button>
+                  </div>
+                  <div class="di-only-custom">
+                    <label class="di-label" for="di-custom-model">Custom model</label>
+                    <p class="di-helper" id="di-custom-model-hint">Provide a container image, private registry path, or Hugging Face model ID you are approved to run in this region.</p>
+                    <input type="text" class="di-input" id="di-custom-model" name="di-custom-model" placeholder="e.g. ghcr.io/myorg/inference-server:v1 or org/model-name" autocomplete="off" aria-describedby="di-custom-model-hint">
+                  </div>
+                </div>
+
                 <fieldset class="di-field di-pricing-fieldset">
                   <legend class="di-sr-only">Pricing model</legend>
                   <div class="di-radio-row" role="radiogroup" aria-label="Pricing type">
@@ -2105,6 +2175,7 @@ for chunk in response:
                     <span class="di-summary-contract di-only-contract" id="di-summary-contract-label">Contract</span>
                   </div>
                   <dl class="di-spec-list" id="di-summary-specs">
+                    <div><dt>Model</dt><dd id="di-spec-model">NVIDIA-Nemotron-Nano-12B-v2-VL-BF16</dd></div>
                     <div><dt>Number of nodes</dt><dd id="di-spec-nodes">1</dd></div>
                     <div><dt>Machine</dt><dd id="di-spec-machine">NVIDIA</dd></div>
                     <div><dt>Type</dt><dd id="di-spec-type">GPU - H100</dd></div>
@@ -3272,7 +3343,31 @@ for chunk in response:
 
       (function dedicatedInferenceProto() {
         var wizardPanel = document.getElementById('di-wizard-panel');
+        var modelSection = document.getElementById('di-model-section');
         if (!wizardPanel) return;
+
+        var diOsModelLabels = {
+          'nemotron-nano-12b': 'NVIDIA-Nemotron-Nano-12B-v2-VL-BF16',
+          'nemotron-30b': 'NVIDIA-Nemotron-3-Nano-30B-A3B-BF16',
+          'deepseek-r1': 'DeepSeek-R1',
+          'deepseek-v3': 'DeepSeek-V3',
+          'llama-31-8b': 'Llama-3.1-8B-Instruct'
+        };
+
+        function syncDiModelSourceClass() {
+          if (!modelSection) return;
+          var r = wizardPanel.querySelector('input[name="di-model-source"]:checked');
+          if (!r) return;
+          modelSection.classList.remove('di-mode-model-opensource', 'di-mode-model-custom');
+          modelSection.classList.add(r.value === 'custom' ? 'di-mode-model-custom' : 'di-mode-model-opensource');
+        }
+
+        function syncDiModelCardSelected() {
+          document.querySelectorAll('#di-model-section .di-model-card').forEach(function(card) {
+            var inp = card.querySelector('.di-model-input');
+            card.classList.toggle('di-model-card-selected', inp && inp.checked);
+          });
+        }
 
         function syncDiPricingClass() {
           var r = wizardPanel.querySelector('input[name="di-pricing"]:checked');
@@ -3285,6 +3380,8 @@ for chunk in response:
         function openDedicatedDeploy() {
           showPage('dedicated-inference-deploy');
           syncDiPricingClass();
+          syncDiModelSourceClass();
+          syncDiModelCardSelected();
           updateDiSummary();
           updateDiUrlPreview();
           var mw = document.querySelector('.main-wrapper');
@@ -3410,7 +3507,19 @@ for chunk in response:
         }
 
         function updateDiSummary() {
-          var checked = document.querySelector('input[name="di-gpu"]:checked');
+          var modelDd = document.getElementById('di-spec-model');
+          var src = wizardPanel.querySelector('input[name="di-model-source"]:checked');
+          if (modelDd && src) {
+            if (src.value === 'custom') {
+              var customIn = document.getElementById('di-custom-model');
+              var cv = customIn && customIn.value ? customIn.value.trim() : '';
+              modelDd.textContent = cv || '—';
+            } else {
+              var os = wizardPanel.querySelector('input[name="di-model-os"]:checked');
+              modelDd.textContent = os && diOsModelLabels[os.value] ? diOsModelLabels[os.value] : '—';
+            }
+          }
+          var checked = wizardPanel.querySelector('input[name="di-gpu"]:checked');
           var key = checked ? checked.value : 'h100';
           var spec = gpuSpecs[key] || gpuSpecs.h100;
           var nodes = getNodes();
@@ -3444,8 +3553,30 @@ for chunk in response:
 
         wizardPanel.addEventListener('change', function(e) {
           var t = e.target;
-          if (t && t.getAttribute('name') === 'di-pricing') syncDiPricingClass();
+          var n = t && t.getAttribute('name');
+          if (n === 'di-pricing') syncDiPricingClass();
+          if (n === 'di-model-source') {
+            syncDiModelSourceClass();
+            updateDiSummary();
+          }
+          if (n === 'di-model-os') {
+            syncDiModelCardSelected();
+            updateDiSummary();
+          }
         });
+
+        var diCustomModel = document.getElementById('di-custom-model');
+        if (diCustomModel) {
+          diCustomModel.addEventListener('input', updateDiSummary);
+          diCustomModel.addEventListener('change', updateDiSummary);
+        }
+
+        var diModelSeeMore = document.getElementById('di-model-see-more');
+        if (diModelSeeMore) {
+          diModelSeeMore.addEventListener('click', function(e) {
+            e.preventDefault();
+          });
+        }
 
         document.querySelectorAll('input[name="di-gpu"]').forEach(function(r) {
           r.addEventListener('change', function() {
@@ -3472,6 +3603,8 @@ for chunk in response:
         });
 
         syncDiPricingClass();
+        syncDiModelSourceClass();
+        syncDiModelCardSelected();
         syncGpuCardSelected();
         updateDiSummary();
         updateDiUrlPreview();

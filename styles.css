@@ -1326,6 +1326,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .di-radio-input:checked + .di-radio-ui { border-color: #0069ff; background: #0069ff; box-shadow: inset 0 0 0 3px #fff; }
 .di-radio-input:focus-visible + .di-radio-ui { outline: 2px solid #0069ff; outline-offset: 2px; }
 .di-section-title { margin: 0 0 12px; font-size: 16px; font-weight: 700; color: #031b4d; }
+.di-model-section { margin-bottom: 28px; }
+.di-model-source-fieldset { border: none; padding: 0; margin: 0 0 16px; }
+.di-model-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; max-width: 640px; }
+.di-model-card { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fafbfc; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+.di-model-card:hover { border-color: #cbd5e1; }
+.di-model-card-selected { border-color: #0069ff; background: #fff; box-shadow: 0 0 0 1px #0069ff; }
+.di-model-input { position: absolute; opacity: 0; pointer-events: none; }
+.di-model-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #94a3b8; flex-shrink: 0; }
+.di-model-card-selected .di-model-radio { border-color: #0069ff; background: #0069ff; box-shadow: inset 0 0 0 3px #fff; }
+.di-model-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.di-model-name { font-size: 15px; font-weight: 600; color: #031b4d; }
+.di-model-meta { font-size: 13px; color: #64748b; }
+.di-model-details-link { display: inline; padding: 0; margin: 0; border: none; background: none; font: inherit; color: #0069ff; cursor: pointer; text-decoration: underline; font-size: 13px; }
+.di-model-details-link:hover { color: #0052cc; }
+.di-model-more-btn { padding: 0; margin: 0; border: none; background: none; font: inherit; font-size: 14px; font-weight: 500; color: #0069ff; cursor: pointer; text-align: left; }
+.di-model-more-btn:hover { text-decoration: underline; }
+.di-mode-model-opensource .di-only-custom { display: none !important; }
+.di-mode-model-custom .di-only-opensource { display: none !important; }
 .di-updated-global { margin-bottom: 12px; }
 .di-updated-badge { display: inline-block; font-size: 12px; font-weight: 500; color: #0369a1; background: #e0f2fe; border: 1px solid #7dd3fc; padding: 4px 10px; border-radius: 6px; }
 .di-gpu-list { display: flex; flex-direction: column; gap: 10px; }
