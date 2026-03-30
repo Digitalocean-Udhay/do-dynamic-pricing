@@ -1310,6 +1310,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .di-form-title { margin: 0 0 28px; font-size: 24px; font-weight: 700; color: #031b4d; }
 .di-field { margin-bottom: 28px; }
 .di-label { display: block; font-size: 14px; font-weight: 600; color: #0e1e25; margin-bottom: 8px; }
+.di-label-spaced { margin-top: 20px; }
+.di-code-inline { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; background: #f1f5f9; padding: 1px 6px; border-radius: 4px; }
 .di-pricing-fieldset { border: none; padding: 0; margin: 0 0 28px; }
 .di-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .di-note { margin: 0 0 28px; max-width: 640px; }
