@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=22">
+  <link rel="stylesheet" href="styles.css?v=23">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -2001,7 +2001,7 @@ for chunk in response:
                       <label class="di-radio-label">
                         <input type="radio" name="di-model-source" value="custom" class="di-radio-input">
                         <span class="di-radio-ui"></span>
-                        <span class="di-radio-text">Custom</span>
+                        <span class="di-radio-text">Model registry</span>
                       </label>
                     </div>
                   </fieldset>
@@ -2052,12 +2052,12 @@ for chunk in response:
                     <button type="button" class="di-model-more-btn" id="di-model-see-more">See more models</button>
                   </div>
                   <div class="di-only-custom">
-                    <label class="di-label" for="di-hf-model-id">Hugging Face model ID</label>
-                    <p class="di-helper" id="di-hf-model-hint">The model repo ID on huggingface.co (e.g. <code class="di-code-inline">org/model-name</code>).</p>
-                    <input type="text" class="di-input" id="di-hf-model-id" name="di-hf-model-id" placeholder="e.g. meta-llama/Llama-3.1-8B-Instruct" autocomplete="off" spellcheck="false" aria-describedby="di-hf-model-hint">
-                    <label class="di-label di-label-spaced" for="di-hf-token">Hugging Face access token</label>
-                    <p class="di-helper" id="di-hf-token-hint">Used to authenticate when the model is gated or private. Treat like a password.</p>
-                    <input type="password" class="di-input" id="di-hf-token" name="di-hf-token" placeholder="hf_…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="di-hf-token-hint">
+                    <label class="di-label" for="di-registry-model-ref">Model registry reference</label>
+                    <p class="di-helper" id="di-registry-model-hint">Path to the model artifact in your registry—namespace, name, and tag or digest (OCI-style URI). Example: <code class="di-code-inline">registry.example.com/team/inference-server:v1</code></p>
+                    <input type="text" class="di-input" id="di-registry-model-ref" name="di-registry-model-ref" placeholder="e.g. registry.digitalocean.com/my-project/llama-vllm:v1.2.0" autocomplete="off" spellcheck="false" aria-describedby="di-registry-model-hint">
+                    <label class="di-label di-label-spaced" for="di-registry-credentials">Registry credentials</label>
+                    <p class="di-helper" id="di-registry-credentials-hint">Access token or password for private registries. Leave blank if this registry is already connected to your team.</p>
+                    <input type="password" class="di-input" id="di-registry-credentials" name="di-registry-credentials" placeholder="Token or password (optional)" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="di-registry-credentials-hint">
                   </div>
                 </div>
 
@@ -3514,8 +3514,8 @@ for chunk in response:
           var src = wizardPanel.querySelector('input[name="di-model-source"]:checked');
           if (modelDd && src) {
             if (src.value === 'custom') {
-              var hfId = document.getElementById('di-hf-model-id');
-              var cv = hfId && hfId.value ? hfId.value.trim() : '';
+              var regRef = document.getElementById('di-registry-model-ref');
+              var cv = regRef && regRef.value ? regRef.value.trim() : '';
               modelDd.textContent = cv || '—';
             } else {
               var os = wizardPanel.querySelector('input[name="di-model-os"]:checked');
@@ -3568,10 +3568,10 @@ for chunk in response:
           }
         });
 
-        var diHfModelId = document.getElementById('di-hf-model-id');
-        if (diHfModelId) {
-          diHfModelId.addEventListener('input', updateDiSummary);
-          diHfModelId.addEventListener('change', updateDiSummary);
+        var diRegistryModelRef = document.getElementById('di-registry-model-ref');
+        if (diRegistryModelRef) {
+          diRegistryModelRef.addEventListener('input', updateDiSummary);
+          diRegistryModelRef.addEventListener('change', updateDiSummary);
         }
 
         var diModelSeeMore = document.getElementById('di-model-see-more');
