@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=24">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,6 +50,7 @@
           <div class="nav-sub">
             <a href="#" class="nav-sub-item" id="nav-inference-overview" data-page="inference-overview">Overview</a>
             <a href="#" class="nav-sub-item" id="nav-explore-models" data-page="explore-models">Explore Models</a>
+            <a href="#" class="nav-sub-item" id="nav-inference-hub-models" data-page="inference-hub-models">Model catalog</a>
             <a href="#" class="nav-sub-item" id="nav-serverless-inference" data-page="serverless-inference">Run Inference</a>
             <a href="#" class="nav-sub-item" id="nav-dedicated-inference" data-page="dedicated-inference">Inference Hub <span class="nav-tag nav-tag-preview">PREVIEW</span></a>
             <a href="#" class="nav-sub-item" id="nav-customize" data-page="customize">Customize</a>
@@ -1938,6 +1939,117 @@ for chunk in response:
         </main>
       </div>
 
+      <!-- Inference Hub: Model Catalog + My model (registry imports) -->
+      <div class="page-content page-inference-hub-models" id="page-inference-hub-models" hidden>
+        <main class="main-content ihm-main">
+          <h1 class="ihm-product-title">Gradient™ AI Inference Hub</h1>
+          <div class="ihm-subtabs" role="tablist" aria-label="Inference Hub">
+            <button type="button" class="ihm-subtab ihm-subtab-active" role="tab" id="ihm-tab-catalog" aria-selected="true" aria-controls="ihm-panel-catalog" tabindex="0" data-ihm-tab="catalog">Model Catalog</button>
+            <button type="button" class="ihm-subtab" role="tab" id="ihm-tab-mymodel" aria-selected="false" aria-controls="ihm-panel-mymodel" tabindex="-1" data-ihm-tab="mymodel">My model</button>
+          </div>
+
+          <div id="ihm-panel-catalog" class="ihm-panel" role="tabpanel" aria-labelledby="ihm-tab-catalog">
+            <div class="ihm-toolbar">
+              <div class="ihm-search-wrap">
+                <svg class="ihm-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="search" class="ihm-search-input" placeholder="Search by Model name." aria-label="Search by model name">
+              </div>
+              <button type="button" class="ihm-filters-btn"><svg class="ihm-filters-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg> Filters</button>
+            </div>
+            <div class="ihm-table-wrap">
+              <table class="ihm-table">
+                <thead>
+                  <tr>
+                    <th class="ihm-th">Name</th>
+                    <th class="ihm-th">Type</th>
+                    <th class="ihm-th">Capabilities</th>
+                    <th class="ihm-th">Price</th>
+                    <th class="ihm-th">Availability</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="ihm-td"><span class="ihm-name">All MiniLM L6 v2</span><span class="ihm-id">sentence-transformers/all-MiniLM-L6-v2</span></td>
+                    <td class="ihm-td">Embedding</td>
+                    <td class="ihm-td">Vectorization</td>
+                    <td class="ihm-td">$0.02 / 1M in · $0.02 / 1M out</td>
+                    <td class="ihm-td"><span class="ihm-pill">Serverless</span></td>
+                  </tr>
+                  <tr>
+                    <td class="ihm-td"><span class="ihm-name">Anthropic Claude 4.1 Opus</span><span class="ihm-id">anthropic/claude-4.1-opus</span></td>
+                    <td class="ihm-td">Chat</td>
+                    <td class="ihm-td">Inference</td>
+                    <td class="ihm-td">$15.00 / 1M in · $75.00 / 1M out</td>
+                    <td class="ihm-td"><span class="ihm-pill">Serverless</span></td>
+                  </tr>
+                  <tr>
+                    <td class="ihm-td"><span class="ihm-name">Llama 3.3 70B</span><span class="ihm-id">meta/llama-3.3-70b</span></td>
+                    <td class="ihm-td">Chat</td>
+                    <td class="ihm-td">General · Code</td>
+                    <td class="ihm-td">$0.80 / 1M in · $0.80 / 1M out</td>
+                    <td class="ihm-td"><span class="ihm-pill">Serverless</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="ihm-panel-mymodel" class="ihm-panel" role="tabpanel" aria-labelledby="ihm-tab-mymodel" hidden>
+            <section class="ihm-import-section" aria-labelledby="ihm-import-heading">
+              <h2 id="ihm-import-heading" class="ihm-section-title">Import custom model</h2>
+              <p class="ihm-import-lead">Push an OCI image to your registry, then register it here. Saved models appear in <strong class="ihm-inline-strong">Dedicated Inference → Custom</strong> and in the deployment picker.</p>
+              <div class="ihm-import-grid">
+                <div class="ihm-field">
+                  <label class="ihm-label" for="ihm-import-registry-uri">Model registry reference</label>
+                  <input type="text" id="ihm-import-registry-uri" class="ihm-input" placeholder="registry.example.com/namespace/model:tag" autocomplete="off" spellcheck="false">
+                </div>
+                <div class="ihm-field">
+                  <label class="ihm-label" for="ihm-import-display-name">Display name</label>
+                  <input type="text" id="ihm-import-display-name" class="ihm-input" placeholder="e.g. Llama vLLM · production" autocomplete="off">
+                </div>
+                <div class="ihm-field ihm-field-full">
+                  <label class="ihm-label" for="ihm-import-credentials">Registry credentials (optional)</label>
+                  <input type="password" id="ihm-import-credentials" class="ihm-input" placeholder="Token or password" autocomplete="off" autocapitalize="off" spellcheck="false">
+                </div>
+              </div>
+              <p class="ihm-import-note" id="ihm-import-feedback" role="status" aria-live="polite"></p>
+              <button type="button" class="ihm-btn-primary" id="ihm-import-submit">Add to My models</button>
+            </section>
+            <section class="ihm-custom-list-section" aria-labelledby="ihm-custom-list-heading">
+              <h2 id="ihm-custom-list-heading" class="ihm-section-title">Your custom models</h2>
+              <div class="ihm-table-wrap">
+                <table class="ihm-table" id="ihm-custom-models-table">
+                  <thead>
+                    <tr>
+                      <th class="ihm-th">Name</th>
+                      <th class="ihm-th">Registry reference</th>
+                      <th class="ihm-th">Updated</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ihm-custom-models-tbody">
+                    <tr data-registry-uri="registry.digitalocean.com/acme/llama-vllm:v1.2.0">
+                      <td class="ihm-td"><span class="ihm-name">Llama vLLM · production</span></td>
+                      <td class="ihm-td ihm-td-mono">registry.digitalocean.com/acme/llama-vllm:v1.2.0</td>
+                      <td class="ihm-td">Mar 20, 2026</td>
+                    </tr>
+                    <tr data-registry-uri="registry.digitalocean.com/acme/mistral-serving:v0.9.1">
+                      <td class="ihm-td"><span class="ihm-name">Mistral serving · staging</span></td>
+                      <td class="ihm-td ihm-td-mono">registry.digitalocean.com/acme/mistral-serving:v0.9.1</td>
+                      <td class="ihm-td">Mar 18, 2026</td>
+                    </tr>
+                    <tr data-registry-uri="registry.digitalocean.com/team/embeddings-bge:v2">
+                      <td class="ihm-td"><span class="ihm-name">BGE embeddings · shared</span></td>
+                      <td class="ihm-td ihm-td-mono">registry.digitalocean.com/team/embeddings-bge:v2</td>
+                      <td class="ihm-td">Mar 12, 2026</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+
       <!-- Dedicated inference (prototype: Contract vs Dynamic pricing) -->
       <div class="page-content page-dedicated-inference" id="page-dedicated-inference" hidden>
         <div class="di-page-inner">
@@ -2001,7 +2113,7 @@ for chunk in response:
                       <label class="di-radio-label">
                         <input type="radio" name="di-model-source" value="custom" class="di-radio-input">
                         <span class="di-radio-ui"></span>
-                        <span class="di-radio-text">Model registry</span>
+                        <span class="di-radio-text">Custom</span>
                       </label>
                     </div>
                   </fieldset>
@@ -2052,7 +2164,18 @@ for chunk in response:
                     <button type="button" class="di-model-more-btn" id="di-model-see-more">See more models</button>
                   </div>
                   <div class="di-only-custom">
-                    <label class="di-label" for="di-registry-model-ref">Model registry reference</label>
+                    <label class="di-label" for="di-saved-custom-model">Saved custom models</label>
+                    <p class="di-helper" id="di-saved-custom-hint">Models you imported under Inference Hub → <strong class="di-inline-strong">My model</strong> are listed here. The registry URI is filled in for you, or enter one manually below.</p>
+                    <div class="di-picker-row">
+                      <select class="di-select di-select-picker" id="di-saved-custom-model" name="di-saved-custom-model" aria-describedby="di-saved-custom-hint">
+                        <option value="">Select a saved model…</option>
+                        <option value="registry.digitalocean.com/acme/llama-vllm:v1.2.0">Llama vLLM · production</option>
+                        <option value="registry.digitalocean.com/acme/mistral-serving:v0.9.1">Mistral serving · staging</option>
+                        <option value="registry.digitalocean.com/team/embeddings-bge:v2">BGE embeddings · shared</option>
+                      </select>
+                      <a href="#" class="di-link-import" data-page="inference-hub-models" data-ihm-tab="mymodel">Import</a>
+                    </div>
+                    <label class="di-label di-label-spaced" for="di-registry-model-ref">Model registry reference</label>
                     <p class="di-helper" id="di-registry-model-hint">Path to the model artifact in your registry—namespace, name, and tag or digest (OCI-style URI). Example: <code class="di-code-inline">registry.example.com/team/inference-server:v1</code></p>
                     <input type="text" class="di-input" id="di-registry-model-ref" name="di-registry-model-ref" placeholder="e.g. registry.digitalocean.com/my-project/llama-vllm:v1.2.0" autocomplete="off" spellcheck="false" aria-describedby="di-registry-model-hint">
                     <label class="di-label di-label-spaced" for="di-registry-credentials">Registry credentials</label>
@@ -3016,6 +3139,26 @@ for chunk in response:
           if (group) group.classList.toggle('expanded');
         });
       });
+      function setInferenceHubModelsTab(tab) {
+        var catalogBtn = document.getElementById('ihm-tab-catalog');
+        var mymodelBtn = document.getElementById('ihm-tab-mymodel');
+        var panelCat = document.getElementById('ihm-panel-catalog');
+        var panelMy = document.getElementById('ihm-panel-mymodel');
+        var isCatalog = tab !== 'mymodel';
+        if (catalogBtn) {
+          catalogBtn.classList.toggle('ihm-subtab-active', isCatalog);
+          catalogBtn.setAttribute('aria-selected', isCatalog ? 'true' : 'false');
+          catalogBtn.setAttribute('tabindex', isCatalog ? '0' : '-1');
+        }
+        if (mymodelBtn) {
+          mymodelBtn.classList.toggle('ihm-subtab-active', !isCatalog);
+          mymodelBtn.setAttribute('aria-selected', !isCatalog ? 'true' : 'false');
+          mymodelBtn.setAttribute('tabindex', !isCatalog ? '0' : '-1');
+        }
+        if (panelCat) panelCat.hidden = !isCatalog;
+        if (panelMy) panelMy.hidden = isCatalog;
+      }
+
       function showPage(pageId) {
         document.querySelectorAll('.page-content').forEach(function(el) { el.hidden = true; });
         var page = document.getElementById('page-' + pageId);
@@ -3027,6 +3170,11 @@ for chunk in response:
             el.classList.add('active');
           }
         });
+        if (pageId === 'inference-hub-models') {
+          var pending = typeof window.__ihmPendingTab === 'string' ? window.__ihmPendingTab : 'catalog';
+          window.__ihmPendingTab = null;
+          setInferenceHubModelsTab(pending === 'mymodel' ? 'mymodel' : 'catalog');
+        }
       }
       var archCanvasStartOver = document.getElementById('arch-canvas-start-over');
       if (archCanvasStartOver) archCanvasStartOver.addEventListener('click', function(e) { e.preventDefault(); showPage('build-app'); });
@@ -3124,9 +3272,73 @@ for chunk in response:
           e.preventDefault();
           e.stopPropagation();
           var pageId = this.getAttribute('data-page');
-          if (pageId) showPage(pageId);
+          if (pageId) {
+            if (pageId === 'inference-hub-models') window.__ihmPendingTab = 'catalog';
+            showPage(pageId);
+          }
         });
       });
+
+      document.querySelectorAll('#ihm-tab-catalog, #ihm-tab-mymodel').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var tab = this.getAttribute('data-ihm-tab');
+          if (tab) setInferenceHubModelsTab(tab);
+        });
+      });
+
+      (function inferenceHubImportDemo() {
+        var submit = document.getElementById('ihm-import-submit');
+        var feedback = document.getElementById('ihm-import-feedback');
+        var tbody = document.getElementById('ihm-custom-models-tbody');
+        var sel = document.getElementById('di-saved-custom-model');
+        if (!submit) return;
+        submit.addEventListener('click', function(e) {
+          e.preventDefault();
+          var uriEl = document.getElementById('ihm-import-registry-uri');
+          var nameEl = document.getElementById('ihm-import-display-name');
+          var uri = uriEl && uriEl.value ? uriEl.value.trim() : '';
+          var disp = nameEl && nameEl.value ? nameEl.value.trim() : '';
+          if (!uri) {
+            if (feedback) feedback.textContent = 'Enter a model registry reference to continue.';
+            return;
+          }
+          if (!disp) disp = uri;
+          if (tbody) {
+            var tr = document.createElement('tr');
+            tr.setAttribute('data-registry-uri', uri);
+            var d = new Date();
+            var dateStr = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+            tr.innerHTML = '<td class="ihm-td"><span class="ihm-name"></span></td><td class="ihm-td ihm-td-mono"></td><td class="ihm-td"></td>';
+            tr.querySelector('.ihm-name').textContent = disp;
+            tr.children[1].textContent = uri;
+            tr.children[2].textContent = dateStr;
+            tbody.insertBefore(tr, tbody.firstChild);
+          }
+          if (sel) {
+            var exists = false;
+            for (var i = 0; i < sel.options.length; i++) {
+              if (sel.options[i].value === uri) { exists = true; break; }
+            }
+            if (!exists) {
+              var opt = document.createElement('option');
+              opt.value = uri;
+              opt.textContent = disp;
+              sel.appendChild(opt);
+            }
+            sel.value = uri;
+            var regRef = document.getElementById('di-registry-model-ref');
+            if (regRef) {
+              regRef.value = uri;
+              regRef.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+          }
+          if (uriEl) uriEl.value = '';
+          if (nameEl) nameEl.value = '';
+          var cred = document.getElementById('ihm-import-credentials');
+          if (cred) cred.value = '';
+          if (feedback) feedback.textContent = 'Added “' + disp + '”. It is now available in the Dedicated Inference custom model picker.';
+        });
+      })();
       document.body.addEventListener('click', function(e) {
         var target = e.target.closest('[data-page]');
         if (target && !target.closest('.sidebar')) {
@@ -3135,6 +3347,10 @@ for chunk in response:
           var pageId = target.getAttribute('data-page');
           if (pageId) {
             if (pageId === 'billing' && gdLimitModal && !gdLimitModal.hidden) closeGdLimitModal();
+            var ihmTab = target.getAttribute('data-ihm-tab');
+            if (pageId === 'inference-hub-models') {
+              window.__ihmPendingTab = ihmTab ? ihmTab : 'catalog';
+            }
             showPage(pageId);
           }
         }
@@ -3572,6 +3788,17 @@ for chunk in response:
         if (diRegistryModelRef) {
           diRegistryModelRef.addEventListener('input', updateDiSummary);
           diRegistryModelRef.addEventListener('change', updateDiSummary);
+        }
+
+        var diSavedCustomModel = document.getElementById('di-saved-custom-model');
+        if (diSavedCustomModel && diRegistryModelRef) {
+          diSavedCustomModel.addEventListener('change', function() {
+            var v = diSavedCustomModel.value;
+            if (v) {
+              diRegistryModelRef.value = v;
+            }
+            updateDiSummary();
+          });
         }
 
         var diModelSeeMore = document.getElementById('di-model-see-more');
