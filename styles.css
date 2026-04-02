@@ -1330,6 +1330,60 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .di-section-title { margin: 0 0 12px; font-size: 16px; font-weight: 700; color: #031b4d; }
 .di-model-section { margin-bottom: 28px; }
 .di-model-source-fieldset { border: none; padding: 0; margin: 0 0 16px; }
+.di-ms-tabs { display: flex; flex-wrap: wrap; gap: 0; max-width: 480px; border-bottom: 1px solid #e2e8f0; margin-bottom: 4px; }
+.di-ms-tab { position: relative; margin: 0; padding: 0; cursor: pointer; user-select: none; }
+.di-ms-tab-input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.di-ms-tab-text { display: block; padding: 12px 20px; font-size: 15px; font-weight: 600; color: #64748b; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.15s, border-color 0.15s; }
+.di-ms-tab:hover .di-ms-tab-text { color: #334155; }
+.di-ms-tab:has(.di-ms-tab-input:checked) .di-ms-tab-text { color: #0069ff; border-bottom-color: #0069ff; }
+.di-ms-tab:has(.di-ms-tab-input:focus-visible) { outline: none; }
+.di-ms-tab:has(.di-ms-tab-input:focus-visible) .di-ms-tab-text { outline: 2px solid #0069ff; outline-offset: 2px; border-radius: 4px; }
+.di-label-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.di-label-inline { margin-bottom: 0; }
+.di-help-trigger { width: 20px; height: 20px; padding: 0; border: 1px solid #cbd5e1; border-radius: 50%; background: #f8fafc; color: #64748b; font-size: 12px; font-weight: 700; line-height: 1; cursor: help; font-family: inherit; flex-shrink: 0; }
+.di-help-trigger:hover { border-color: #94a3b8; color: #475569; }
+.di-helper-tight { margin-bottom: 10px; }
+.di-custom-model-row { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; max-width: 640px; padding: 14px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fafbfc; }
+.di-custom-model-row-left { display: flex; align-items: flex-start; gap: 14px; flex: 1; min-width: 180px; }
+.di-custom-model-icon { flex-shrink: 0; color: #0069ff; display: flex; align-items: center; justify-content: center; }
+.di-custom-model-copy { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.di-custom-model-title { font-size: 15px; font-weight: 600; color: #031b4d; }
+.di-custom-model-sub { font-size: 13px; color: #64748b; line-height: 1.35; }
+.di-custom-model-controls { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; flex: 1; min-width: 200px; justify-content: flex-end; }
+.di-custom-select-wrap { flex: 1; min-width: 160px; max-width: 320px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; padding: 0; }
+.di-custom-model-select { width: 100%; max-width: none; border: none; border-radius: 8px; padding: 10px 32px 10px 12px; margin: 0; font-size: 14px; background-color: #fff; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; appearance: none; -webkit-appearance: none; cursor: pointer; }
+.di-btn-import { padding: 10px 18px; font-size: 14px; font-weight: 600; color: #0069ff; background: #fff; border: 1px solid #0069ff; border-radius: 8px; cursor: pointer; font-family: inherit; white-space: nowrap; align-self: stretch; }
+.di-btn-import:hover { background: #f0f7ff; border-color: #0052cc; color: #0052cc; }
+
+/* Inference Hub — Import Model */
+.ihim-main { padding-bottom: 48px; max-width: 960px; }
+.ihim-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px; font-size: 14px; font-weight: 500; color: #0069ff; text-decoration: none; }
+.ihim-back:hover { text-decoration: underline; color: #0052cc; }
+.ihim-back-icon { font-size: 16px; line-height: 1; }
+.ihim-title { margin: 0 0 28px; font-size: 26px; font-weight: 700; color: #031b4d; letter-spacing: -0.02em; }
+.ihim-layout { display: grid; grid-template-columns: 1fr minmax(240px, 280px); gap: 32px; align-items: start; }
+.ihim-section-h { margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #0e1e25; }
+.ihim-source-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.ihim-source-card { display: flex; align-items: center; gap: 16px; width: 100%; padding: 18px 20px; text-align: left; border: 1px solid #e2e8f0; border-radius: 10px; background: #fff; cursor: pointer; font-family: inherit; transition: border-color 0.15s, box-shadow 0.15s; }
+.ihim-source-card:hover { border-color: #0069ff; box-shadow: 0 0 0 1px rgba(0, 105, 255, 0.15); }
+.ihim-source-icon { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #f0f7ff; color: #0069ff; }
+.ihim-source-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.ihim-source-title { font-size: 15px; font-weight: 600; color: #031b4d; }
+.ihim-source-desc { font-size: 13px; color: #64748b; line-height: 1.4; }
+.ihim-source-chevron { flex-shrink: 0; color: #94a3b8; }
+.ihim-callout { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 8px; background: #eff6ff; border: 1px solid #bfdbfe; }
+.ihim-callout-icon { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #0069ff; color: #fff; font-size: 12px; font-weight: 800; font-style: italic; display: flex; align-items: center; justify-content: center; line-height: 1; }
+.ihim-callout-text { margin: 0; font-size: 13px; color: #1e3a5f; line-height: 1.5; }
+.ihim-summary { position: sticky; top: 24px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px; background: #fafbfc; }
+.ihim-summary-title { margin: 0 0 12px; font-size: 15px; font-weight: 700; color: #0e1e25; }
+.ihim-summary-line { margin: 0 0 16px; font-size: 14px; color: #64748b; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.ihim-summary-label { font-weight: 600; color: #334155; }
+.ihim-summary-meta { font-weight: 500; color: #94a3b8; }
+.ihim-summary-btn { width: 100%; padding: 12px 16px; font-size: 15px; font-weight: 600; color: #94a3b8; background: #e2e8f0; border: none; border-radius: 8px; cursor: not-allowed; font-family: inherit; }
+@media (max-width: 900px) {
+  .ihim-layout { grid-template-columns: 1fr; }
+  .ihim-summary { position: static; }
+}
 .di-model-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; max-width: 640px; }
 .di-model-card { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fafbfc; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
 .di-model-card:hover { border-color: #cbd5e1; }
@@ -1347,10 +1401,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .di-mode-model-opensource .di-only-custom { display: none !important; }
 .di-mode-model-custom .di-only-opensource { display: none !important; }
 .di-inline-strong { font-weight: 600; color: #334155; }
-.di-picker-row { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; max-width: 640px; margin-bottom: 4px; }
-.di-select-picker { flex: 1; min-width: 200px; max-width: none; }
-.di-link-import { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; font-size: 14px; font-weight: 600; color: #0069ff; text-decoration: none; border: 1px solid #0069ff; border-radius: 8px; background: #fff; white-space: nowrap; }
-.di-link-import:hover { background: #f0f7ff; color: #0052cc; border-color: #0052cc; }
 
 /* Inference Hub — Model Catalog / My model */
 .ihm-main { padding-bottom: 48px; max-width: 1100px; }
@@ -1393,8 +1443,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .ihm-custom-list-section .ihm-table .ihm-name { color: #031b4d; }
 @media (max-width: 720px) {
   .ihm-import-grid { grid-template-columns: 1fr; }
-  .di-picker-row { flex-direction: column; align-items: stretch; }
-  .di-link-import { justify-content: center; }
+  .di-custom-model-controls { flex-direction: column; align-items: stretch; }
+  .di-custom-select-wrap { max-width: none; }
 }
 .di-updated-global { margin-bottom: 12px; }
 .di-updated-badge { display: inline-block; font-size: 12px; font-weight: 500; color: #0369a1; background: #e0f2fe; border: 1px solid #7dd3fc; padding: 4px 10px; border-radius: 6px; }
