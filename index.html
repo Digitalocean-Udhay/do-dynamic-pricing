@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://digitalocean-udhay.github.io/do-dynamic-pricing/">
+  <meta property="og:url" content="https://digitalocean-udhay.github.io/do-dynamic-pricing/">
   <title>DigitalOcean Dashboard</title>
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=26">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -2109,14 +2111,163 @@ for chunk in response:
             <span class="di-tab">Knowledge bases</span>
           </nav>
 
-          <div class="di-workspace">
-            <div class="di-empty">
-              <div class="di-empty-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#0069ff" stroke-width="1.5" width="40" height="40"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="8" y="14" width="7" height="7" rx="1"/></svg>
-              </div>
-              <h1 class="di-empty-title">You don't have any inferences</h1>
-              <p class="di-empty-desc">Create your first inference to get started.</p>
+          <div class="di-workspace di-workspace-list">
+            <div class="di-list-header">
+              <h1 class="di-list-title">Dedicated inference</h1>
               <button type="button" class="di-btn-deploy-outline" id="di-btn-open-wizard" data-action="open-inference-hub-deploy">Deploy Dedicated Inference</button>
+            </div>
+            <p class="di-list-lead">Open a deployment to view its overview, per-node dynamic rates, and endpoints.</p>
+            <div class="di-table-wrap">
+              <table class="di-deployments-table" aria-label="Dedicated inference deployments">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">VPC</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="di-deployments-th-actions"> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="#" class="di-deployment-name" data-page="dedicated-inference-overview">mistral-inference-atl</a></td>
+                    <td><span class="di-deployment-meta">ATL1</span></td>
+                    <td><span class="di-deployment-meta">atl1-vpc-01</span></td>
+                    <td><span class="dio-status dio-status-active">Active</span></td>
+                    <td class="di-deployments-td-actions"><a href="#" class="di-deployment-action" data-page="dedicated-inference-overview">Overview</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dedicated inference: resource overview (dynamic per-node pricing) -->
+      <div class="page-content page-dedicated-inference-overview" id="page-dedicated-inference-overview" hidden>
+        <div class="di-page-inner dio-page">
+          <nav class="di-top-tabs" aria-label="Inference product areas">
+            <span class="di-tab">Get Started</span>
+            <span class="di-tab">Agent workspaces</span>
+            <span class="di-tab">Serverless inference</span>
+            <span class="di-tab di-tab-active" aria-current="page">Dedicated Inference <span class="di-preview-pill">PREVIEW</span></span>
+            <span class="di-tab">Knowledge bases</span>
+          </nav>
+
+          <div class="dio-resource-shell">
+            <button type="button" class="dio-back" data-page="dedicated-inference"><span class="dio-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Back to Dedicated Inference</button>
+
+            <header class="dio-resource-header">
+              <div class="dio-resource-title-row">
+                <h1 class="dio-resource-title">mistral-inference-atl</h1>
+                <span class="dio-status dio-status-active">Active</span>
+              </div>
+              <div class="dio-resource-meta">
+                <span class="dio-meta-item"><span class="dio-meta-label">VPC</span> atl1-vpc-01</span>
+                <span class="dio-meta-sep" aria-hidden="true">·</span>
+                <span class="dio-meta-item dio-meta-region"><span class="dio-flag" aria-hidden="true">🇺🇸</span> ATL1</span>
+              </div>
+            </header>
+
+            <nav class="dio-subtabs" aria-label="Deployment sections">
+              <span class="dio-subtab dio-subtab-active" aria-current="page">Overview</span>
+              <span class="dio-subtab">Insights</span>
+              <span class="dio-subtab">Settings</span>
+            </nav>
+
+            <div class="dio-layout">
+              <div class="dio-main-col">
+                <section class="dio-card dio-cost-card" aria-labelledby="dio-total-cost-heading">
+                  <p class="dio-cost-label" id="dio-total-cost-heading">Total dedicated inference cost</p>
+                  <p class="dio-cost-value"><span id="dio-total-hourly">$3.98</span> <span class="dio-cost-unit">/ hour</span></p>
+                  <p class="dio-cost-footnote">Estimate from the sum of each node’s <strong>current</strong> dynamic rate. Rates can change with demand; see <a href="#" class="dio-inline-link" data-page="billing">cost to date in billing</a>.</p>
+                </section>
+
+                <details class="dio-details" open>
+                  <summary class="dio-details-summary">
+                    <span class="dio-details-summary-text">Configuration details</span>
+                    <span class="dio-details-chevron" aria-hidden="true">▾</span>
+                  </summary>
+                  <div class="dio-details-body">
+                    <div class="dio-config-head">
+                      <span class="dio-config-title">Dedicated Inference</span>
+                      <span class="dio-config-pricing-note">Per-node pricing (dynamic)</span>
+                    </div>
+                    <dl class="dio-spec-grid">
+                      <div><dt>Model</dt><dd><a href="#" class="dio-inline-link">mistralai/Mistral-7B-Instruct-v0.3</a></dd></div>
+                      <div><dt>Model type</dt><dd>Open-source</dd></div>
+                      <div><dt>Machine</dt><dd>AMD</dd></div>
+                      <div><dt>Type</dt><dd>MI300X</dd></div>
+                      <div><dt>GPU</dt><dd>1 per node</dd></div>
+                      <div><dt>VRAM</dt><dd>192 GB</dd></div>
+                      <div><dt>vCPU</dt><dd>20</dd></div>
+                      <div><dt>RAM</dt><dd>240 GB</dd></div>
+                      <div><dt>Boot disk</dt><dd>720 GB NVMe</dd></div>
+                      <div><dt>Scratch disk</dt><dd>5 TB NVMe</dd></div>
+                    </dl>
+                  </div>
+                </details>
+
+                <section class="dio-card dio-nodes-card" aria-labelledby="dio-nodes-heading">
+                  <div class="dio-nodes-head">
+                    <h2 class="dio-nodes-title" id="dio-nodes-heading">Nodes <span class="dio-nodes-sub">(AMD MI300X)</span></h2>
+                    <p class="dio-nodes-hint">Each node is billed at its own dynamic hourly rate.</p>
+                  </div>
+                  <div class="dio-table-wrap">
+                    <table class="dio-nodes-table" id="dio-nodes-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Node</th>
+                          <th scope="col">Status</th>
+                          <th scope="col" class="dio-th-num">Dynamic rate</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr data-hourly="1.94">
+                          <td><span class="dio-node-id">di-node-atl-7k2m</span></td>
+                          <td><span class="dio-status dio-status-active">Running</span></td>
+                          <td class="dio-td-num"><span class="dio-rate">$1.94</span><span class="dio-rate-unit">/hr</span></td>
+                        </tr>
+                        <tr data-hourly="2.04">
+                          <td><span class="dio-node-id">di-node-atl-9p1n</span></td>
+                          <td><span class="dio-status dio-status-active">Running</span></td>
+                          <td class="dio-td-num"><span class="dio-rate">$2.04</span><span class="dio-rate-unit">/hr</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              </div>
+
+              <aside class="dio-side-col" aria-label="Endpoints and examples">
+                <div class="dio-endpoint-toggle" role="group" aria-label="Endpoint visibility">
+                  <button type="button" class="dio-toggle-btn dio-toggle-active" id="dio-endpoint-private" aria-pressed="true">Private endpoint</button>
+                  <button type="button" class="dio-toggle-btn" id="dio-endpoint-public" aria-pressed="false">Public endpoint</button>
+                </div>
+
+                <section class="dio-card dio-endpoint-card">
+                  <h3 class="dio-side-card-title">Inference endpoint</h3>
+                  <p class="dio-endpoint-sub" id="dio-endpoint-context">Private endpoint (VPC network)</p>
+                  <div class="dio-url-row">
+                    <input type="text" class="dio-url-input" id="dio-inference-url" readonly value="https://d1y6ogqlwmipx38s0f33myvb3-private-dedicated.atl1.inference.do.co/v1/chat/completions" aria-label="Inference endpoint URL">
+                    <button type="button" class="dio-copy-btn" id="dio-copy-endpoint" aria-label="Copy URL">Copy</button>
+                  </div>
+                  <p class="dio-token-note">Requests require a valid access token in the <code class="dio-code">Authorization</code> header.</p>
+                  <a href="#" class="dio-ca-link"><span class="dio-ca-icon" aria-hidden="true">⬇</span> Download CA certificate</a>
+                </section>
+
+                <section class="dio-card dio-code-card">
+                  <h3 class="dio-side-card-title">Configuration example</h3>
+                  <pre class="dio-code-block" id="dio-curl-example"><code>curl -sS "https://d1y6ogqlwmipx38s0f33myvb3-private-dedicated.atl1.inference.do.co/v1/chat/completions" \
+  -H "accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+  -d '{
+    "model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "messages": [{ "role": "user", "content": "Hello!" }]
+  }'</code></pre>
+                </section>
+              </aside>
             </div>
           </div>
         </div>
@@ -3220,7 +3371,7 @@ for chunk in response:
         document.querySelectorAll('.sidebar [data-page]').forEach(function(el) {
           el.classList.remove('active');
           var navPage = el.getAttribute('data-page');
-          if (navPage === pageId || (pageId === 'dedicated-inference-deploy' && navPage === 'dedicated-inference') || (pageId === 'inference-hub-import-model' && navPage === 'inference-hub-models')) {
+          if (navPage === pageId || (pageId === 'dedicated-inference-deploy' && navPage === 'dedicated-inference') || (pageId === 'dedicated-inference-overview' && navPage === 'dedicated-inference') || (pageId === 'inference-hub-import-model' && navPage === 'inference-hub-models')) {
             el.classList.add('active');
           }
         });
@@ -3884,6 +4035,81 @@ for chunk in response:
           if (e.key !== 'Escape') return;
           var diDeploy = document.getElementById('page-dedicated-inference-deploy');
           if (!diDeploy || diDeploy.hidden) return;
+          if (modelModal && !modelModal.hidden) return;
+          if (gdLimitModal && !gdLimitModal.hidden) return;
+          showPage('dedicated-inference');
+        });
+      })();
+
+      (function dedicatedInferenceOverview() {
+        var table = document.getElementById('dio-nodes-table');
+        var totalEl = document.getElementById('dio-total-hourly');
+        function recalcTotal() {
+          if (!table || !totalEl) return;
+          var sum = 0;
+          table.querySelectorAll('tbody tr[data-hourly]').forEach(function(tr) {
+            var v = parseFloat(tr.getAttribute('data-hourly'), 10);
+            if (!isNaN(v)) sum += v;
+          });
+          totalEl.textContent = '$' + sum.toFixed(2);
+        }
+        recalcTotal();
+
+        var privBtn = document.getElementById('dio-endpoint-private');
+        var pubBtn = document.getElementById('dio-endpoint-public');
+        var urlInput = document.getElementById('dio-inference-url');
+        var ctxEl = document.getElementById('dio-endpoint-context');
+        var curlEl = document.getElementById('dio-curl-example');
+        var privateUrl = 'https://d1y6ogqlwmipx38s0f33myvb3-private-dedicated.atl1.inference.do.co/v1/chat/completions';
+        var publicUrl = 'https://d1y6ogqlwmipx38s0f33myvb3-dedicated.atl1.inference.do.co/v1/chat/completions';
+        function curlFor(baseUrl) {
+          return 'curl -sS "' + baseUrl + '" \\\n  -H "accept: application/json" \\\n  -H "Content-Type: application/json" \\\n  -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \\\n  -d \'{\n    "model": "mistralai/Mistral-7B-Instruct-v0.3",\n    "messages": [{ "role": "user", "content": "Hello!" }]\n  }\'';
+        }
+        function setEndpointMode(isPrivate) {
+          if (privBtn && pubBtn) {
+            privBtn.classList.toggle('dio-toggle-active', isPrivate);
+            pubBtn.classList.toggle('dio-toggle-active', !isPrivate);
+            privBtn.setAttribute('aria-pressed', isPrivate ? 'true' : 'false');
+            pubBtn.setAttribute('aria-pressed', isPrivate ? 'false' : 'true');
+          }
+          var u = isPrivate ? privateUrl : publicUrl;
+          if (urlInput) urlInput.value = u;
+          if (ctxEl) ctxEl.textContent = isPrivate ? 'Private endpoint (VPC network)' : 'Public endpoint (internet)';
+          if (curlEl) {
+            var code = curlEl.querySelector('code');
+            if (code) code.textContent = curlFor(u);
+          }
+        }
+        if (privBtn) privBtn.addEventListener('click', function() { setEndpointMode(true); });
+        if (pubBtn) pubBtn.addEventListener('click', function() { setEndpointMode(false); });
+
+        var copyBtn = document.getElementById('dio-copy-endpoint');
+        if (copyBtn && urlInput) {
+          copyBtn.addEventListener('click', function() {
+            var url = urlInput.value;
+            var label = 'Copy';
+            function done() {
+              copyBtn.textContent = 'Copied';
+              setTimeout(function() { copyBtn.textContent = label; }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(url).then(done).catch(function() {
+                urlInput.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                done();
+              });
+            } else {
+              urlInput.select();
+              try { document.execCommand('copy'); } catch (e2) {}
+              done();
+            }
+          });
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key !== 'Escape') return;
+          var dio = document.getElementById('page-dedicated-inference-overview');
+          if (!dio || dio.hidden) return;
           if (modelModal && !modelModal.hidden) return;
           if (gdLimitModal && !gdLimitModal.hidden) return;
           showPage('dedicated-inference');
